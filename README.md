@@ -1,1 +1,1 @@
-# www.bestfu.com
+# Bestfu网站，ThinkPHP5
