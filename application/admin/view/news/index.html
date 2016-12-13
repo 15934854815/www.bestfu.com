@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+{include file='public/header' /}
+<style type="text/css">
+	.table tr td:nth-child(2){
+       width:520px;
+    }
+    /*.table tr td:nth-child(3){
+        width:580px;
+    }*/
+	.table tr td:nth-child(5){
+       width:250px;
+    }
+	.table tr td:last-child{
+        width:150px;
+    }
+    
+	.main .btn-box {
+        position: static;
+        margin-top: 30px;
+        padding-left: 125px;
+        margin-bottom: 40px;
+    }
+
+	.main .form-group .form-control {
+        width: 600px;
+    }
+
+    .main .form-group textarea.form-control {
+    	width: 600px;
+        height: 120px;
+        resize: none;
+    }
+
+    .form-horizontal .form-group .control-label {
+        display: inline-block;
+	    width: 90px;
+	    font-weight: 100;
+    }
+</style>
+<body>
+	{include file='public/head' /}
+	{include file='public/left' /}
+	<div id="top-alert" class="fixed alert alert-error" style="display: none;">
+		<button class="close fixed" style="margin-top: 4px;">&times;</button>
+		<div class="alert-content"></div>
+	</div>
+	<div class="main">
+	    <div class="main-inner">
+	        <div class="contain">
+	            <p class="page-title">新闻管理</p>
+	            <ol class="breadcrumb">
+	                <li><a href="{:url('index/index')}">首页</a></li>
+	                <li><a href="{:url('news/index')}">新闻管理</a></li>
+	                <li class="active"><a href="{:url('news/index')}">新闻列表</a></li>
+	            </ol>
+	            <ul class="nav nav-tabs">
+	                <li role="presentation" class="active"><a href="javascript:void(0);">新闻列表</a></li>
+	                <li role="presentation"><a href="{:url('add')}">添加新闻</a></li>
+	            </ul>
+	            <div class="tab-content">
+	                <div class="tab-pane active" id="all">
+	
+	                    <div class="table-box">
+	                        <div class="pane-inner">
+	                        <table class="table">
+	                            <thead>
+	                            <tr>
+	                                <!--<td>ID</td>-->
+	                                <td>序号</td>
+	                                <td>标题</td>
+	                                <!--<td>缩略图</td>-->
+	                                <td>排序</td>
+	                                <td>状态</td>
+	                                <td>发布时间</td>
+	                                <td>操作</td>
+	                            </tr>
+	                            </thead>
+	                            <tbody>
+	                            {notempty name="_list"}
+								{volist name="_list" id="vo"}
+								<tr>
+	                                <!--<td><input class="ids" type="hidden" name="id[]" value="{$vo.id}" />{$vo.id}</td>-->
+	                                <td><input class="ids" type="hidden" name="id[]" value="{$vo.id}" />{$i}</td>
+	                                <td>{$vo.title}</td>
+	                                <!--<td>{$vo.thumb} <a class="border" href="{$vo.thumb}" target="_blank">[点击查看]</a></td>-->
+	                                <td>{$vo.sort}</td>
+	                                <td>{$vo.status_text}</td>
+	                                <td>{$vo.addtime|date='Y-m-d H:i:s', ###}</td>
+	                                <td>
+										<a class="modify border" href="{:url('edit?id='.$vo['id'])}">修改</a>
+										<a href="{:url('status',array('id'=>$vo['id'],'value'=>abs($vo['status']-1)))}" class="stop ajax-get border">{eq name="vo.status" value="0" }关闭{else/}显示{/eq}</a>
+										<a class="delete delete_line border">删除</a>
+									</td>
+	                            </tr>
+	                            {/volist}
+								{else/}
+								<td colspan="6" class="text-center"> aOh! 暂时还没有新闻! </td>
+								{/notempty}
+								</tbody>
+	                        </table>
+	                            </div>
+	                        <nav class="text-right">
+	                        	{$_page}
+	                        </nav>
+	                    </div>
+	                </div>
+	            </div>
+	            <div class="modal fade delete" id="delete_news" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+	                <div class="modal-dialog" role="document">
+	                    <div class="modal-content">
+	                        <div class="modal-header">
+	                            <p class="modal-title">是否删除该新闻？</p>
+	                        </div>
+							<form method="post" class="delete-news" action="{:url('news/delete')}"><input type="hidden" name="id" /></form>
+	                        <div class="modal-footer">
+	                            <button type="submit" class="btn btn-green ajax-post" target-form="delete-news">删除</button>
+	                            <button type="button" class="btn btn-green" data-dismiss="modal">取消</button>
+	                        </div>
+	                    </div>
+	                </div>
+	            </div>
+	        </div>
+	    </div>
+	
+	</div>
+</body>
+{include file='public/script' /}
+<script type="text/javascript">
+    //导航高亮
+    highlight_subnav('{:url('index')}');
+    
+    $('.delete_line').click(function(){
+		var _  = $(this),
+			news_id = _.parents('tr').find(':input[name="id[]"]').val();
+		$('#delete_news').find(':input[name="id"]').val(news_id);
+		$('#delete_news').modal('show');
+	});
+</script>
+</html>

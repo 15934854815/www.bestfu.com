@@ -1,0 +1,27 @@
+{include file='public/header' /}
+<body>
+	<div id="container">
+    	{include file='public/head' /}
+        <div id="main">
+        	<div><img src="__IMG__/news_03.jpg"/></div>
+            <div>
+            	<div class="mianbaoxie"><a href="{:url('index/index')}">首页 &gt; </a><a href="{:url('news/index')}">新闻 &gt; </a> <strong>{$_info.title}</strong></div>
+                <div class="clear"></div>
+                <div class="articleinfos">
+                	<div class="articletitle">{$_info.title}</div>
+                    <div class="articletime">发布日期：{$_info.addtime|date="Y-m-d", ###}</div>
+                    <div class="articleall">
+                    	{$_info.content|htmlspecialchars_decode}
+                    </div>
+                </div>
+            </div>
+        </div>
+        {include file='public/footer' /}
+    </div>
+</body>
+<script type="text/javascript" src="__JS__/website.js"></script>
+<script type="text/javascript">
+	//导航高亮
+	highlight_subnav('{:url('news/index')}');
+</script>
+</html>

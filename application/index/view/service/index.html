@@ -1,0 +1,121 @@
+{include file='public/header' /}
+<body>
+	<div id="container">
+    	{include file='public/head' /}
+        <div id="main">
+        	{notempty name="_banner.thumb"}
+        	{eq name="_banner.status" value="0"}
+        	<div>
+        		{notempty name="_banner.url"}
+        		<a href="{$_banner.url}" {eq name="_banner.tab" value="0"}target="_blank"{/eq}><img src="{$_banner.thumb}"/></a>
+        		{else/}
+        		<img src="{$_banner.thumb}"/>
+        		{/notempty}
+        	</div>
+        	{/eq}
+        	{/notempty}
+            <div>
+            	<ul class="ulcategory">
+                	<li class="category selectimgnono">
+                    <!-- <a href="category_hotels.html"> -->
+                    <img src="__IMG__/service_13.jpg"/>
+                    <!-- </a> -->
+                    <br />
+                    <!-- <span class="seeall"><a href="">查看详情&gt;&gt;</a></span> -->
+                    </li>
+                    <li class="category selectimgnono">
+                    <!-- <a href="category_residential.html"> -->
+                    <img src="__IMG__/service_07.jpg"/>
+                    <!-- </a> -->
+                    <br />
+                    <!-- <span class="seeall"><a href="">查看详情&gt;&gt;</a></span> -->
+                    </li>
+                    <li class="category selectimgnono">
+                    <!-- <a href="category_office.html"> -->
+                    <img src="__IMG__/service_09.jpg"/>
+                    <!-- </a> -->
+                    <br />
+                    <!-- <span class="seeall"><a href="">查看详情&gt;&gt;</a></span> -->
+                    </li>
+                    <li class="category selectimgnono">
+                    <!-- <a href="category_mall.html"> -->
+                    <img src="__IMG__/service_15.jpg"/>
+                    <!-- </a> -->
+                    <br />
+                    <!-- <span class="seeall"><a href="">查看详情&gt;&gt;</a></span> -->
+                    </li>
+                </ul>
+                <div class="clear"></div>
+            </div>
+            <div class="clear"></div>
+            <div class="divsubmit">
+            <div class="submittitle">如果您有任何疑问或建议，请告诉我们。</div><br />
+            <form class="js-ajax-form">
+                <div class="prompt-list">
+                    <div class="layout">
+                        <div class="name">
+                            <label>姓名<span class="star">*</span>：</label>
+                            <input name="name" type="text" value="" />
+                        </div>
+                        <div class="tele">
+                            <label>电话<span class="star">*</span>：</label>
+                            <input name="tel" type="text" value="" />
+                        </div>
+                    </div>
+                    <div class="table-row">
+                        <label>Email：</label>
+                        <input name="company" type="text" value="" />
+                    </div>
+                    <div class="table-row">
+                        <label>地址：</label>
+                        <input name="post" type="text" value="" />
+                    </div>
+                    <div class="message-box">
+                        <label>内容：</label>
+                        <textarea name="message" rows="5" class="message" value="liuyan"></textarea>
+                    </div>
+                    <input type="button" value="提 交" class="prompt-btn"/>
+                </div>
+            </form>
+            </div>
+        </div>
+        {include file='public/footer' /}
+    </div>
+</body>
+<script type="text/javascript" src="__JS__/website.js"></script>
+<script type="text/javascript">
+	//导航高亮
+	highlight_subnav('{:url('service/index')}');
+	//判断是否补全信息并提交信息
+	document.querySelector(".prompt-btn").addEventListener("click",function(){
+		var _input=document.getElementsByTagName("input");
+		var _textarea=document.getElementsByClassName("message")[0];
+		$.ajax({
+			url:"{:url('service/do_message')}",
+			data: {
+				"name": _input[0].value,
+				"tel": _input[1].value,
+				"company": _input[2].value,
+				"post": _input[3].value,
+				"message": _textarea.value
+			},
+			type: "POST",
+			cache:false,
+			dataType:"json",
+			success:function(resp){
+				if(resp.code==1){
+					//console.log(resp);
+					alert(resp.msg);
+					window.location.reload();
+				}else{
+					alert(resp.msg);
+					return false;
+				}
+			},
+			error: function(){
+				alert("异常，请稍后重试！");
+			}
+		});
+	});
+</script>
+</html>

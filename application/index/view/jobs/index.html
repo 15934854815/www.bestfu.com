@@ -1,0 +1,35 @@
+{include file='public/header' /}
+<body>
+	<div id="container">
+    	{include file='public/head' /}
+        <div id="main">
+        	{notempty name="_banner.thumb"}
+        	{eq name="_banner.status" value="0"}
+        	<div>
+        		{notempty name="_banner.url"}
+        		<a href="{$_banner.url}" {eq name="_banner.tab" value="0"}target="_blank"{/eq}><img src="{$_banner.thumb}"/></a>
+        		{else/}
+        		<img src="{$_banner.thumb}"/>
+        		{/notempty}
+        	</div>
+        	{/eq}
+        	{/notempty}
+            <div>
+            	<div class="mianbaoxie"><a href="{:url('index/index')}">首页 &gt; </a><strong>工作机会</strong></div>
+                <div class="clear"></div>
+                <div class="articleinfos">
+                    <div class="artical-content">
+                    	{notempty name="_info.content"}{$_info.content|htmlspecialchars_decode}{/notempty}
+                	</div>
+                </div>
+            </div>
+        </div>
+        {include file='public/footer' /}
+    </div>
+</body>
+<script type="text/javascript" src="__JS__/website.js"></script>
+<script type="text/javascript">
+	//导航高亮
+	highlight_subnav('{:url('jobs/index')}');
+</script>
+</html>

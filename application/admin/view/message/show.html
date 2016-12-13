@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+{include file='public/header' /}
+<style type="text/css">
+	.main .btn-box {
+        position: static;
+        margin-top: 30px;
+        padding-left: 125px;
+        margin-bottom: 40px;
+    }
+
+	.main .form-group .form-control {
+        width: 500px;
+    }
+
+    .form-horizontal .form-group .control-label {
+        display: inline-block;
+	    width: 90px;
+	    font-weight: 100;
+    }
+    
+    .form-group  label.radio-inline:before{
+        top:1px;
+    }
+    .form-group  label.radio-inline{
+        margin-top: 2px;
+    }
+</style>
+<body>
+	{include file='public/head' /}
+	{include file='public/left' /}
+	<div id="top-alert" class="fixed alert alert-error" style="display: none;">
+		<button class="close fixed" style="margin-top: 4px;">&times;</button>
+		<div class="alert-content"></div>
+	</div>
+	<div class="main">
+	    <div class="main-inner">
+	        <div class="contain">
+	            <p class="page-title">留言管理</p>
+	            <ol class="breadcrumb">
+	                <li><a href="{:url('index/index')}">首页</a></li>
+	                <li><a href="{:url('message/index')}">留言管理</a></li>
+	                <li class="active"><a href="{:url('message/show', ['id' => $_info.id])}">查看留言</a></li>
+	            </ol>
+	            <ul class="nav nav-tabs">
+	                <li role="presentation"><a href="{:url('message/index')}">留言列表</a></li>
+	                <li role="presentation" class="active"><a href="javascript:void(0);">查看留言</a></li>
+	            </ul>
+	            <div class="tab-content">
+	                <div class="tab-pane active" id="add">
+	                    <div class="pane-inner">
+	                    <form class="form-horizontal">
+	                        <div class="form-group">
+	                            <label for="user_name" class="control-label">姓名：</label>
+	                            <div class="input-box">
+	                                <input type="text" class="form-control" value="{$_info.name}" readonly="readonly" />
+	                            </div>
+	                        </div>
+	                        <div class="form-group">
+	                            <label for="user_name" class="control-label">电话：</label>
+	                            <div class="input-box">
+	                                <input type="text" class="form-control" value="{$_info.mobile}" readonly="readonly" />
+	                            </div>
+	                        </div>
+	                        <div class="form-group">
+	                            <label for="user_name" class="control-label">E-mail：</label>
+	                            <div class="input-box">
+	                                <input type="text" class="form-control" value="{$_info.email}" readonly="readonly"/>
+	                            </div>
+	                        </div>
+	                        <div class="form-group">
+	                            <label for="user_name" class="control-label">地址：</label>
+	                            <div class="input-box">
+	                                <input type="text" class="form-control" value="{$_info.address}" readonly="readonly" />
+	                            </div>
+	                        </div>
+	                        <div class="form-group">
+								<label for="pro-case" class="control-label">留言内容：</label>
+								<div class="input-box">
+									<textarea name="content" id="pro-case" class="form-control" readonly="readonly" style="width: 750px;">{$_info.content}</textarea>
+								</div>
+							</div>
+	                        <div class="form-group">
+	                            <label for="user_name" class="control-label">留言时间：</label>
+	                            <div class="input-box">
+	                                <input type="text" class="form-control" value="{$_info.addtime|date='Y-m-d H:i:s', ###}" readonly="readonly" />
+	                            </div>
+	                        </div>
+	                    </form>
+	                    </div>
+	                    <div class="btn-box">
+	                        <button class="btn btn-green" onclick="javascript:history.back(-1);return false;">返回</button>
+	                    </div>
+	                </div>
+	            </div>
+	        </div>
+	    </div>
+	</div>
+</body>
+{include file='public/script' /}
+<script type="text/javascript">
+	//导航高亮
+	highlight_subnav("{:url('index')}");
+</script>
+</html>

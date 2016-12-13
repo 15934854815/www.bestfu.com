@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+{include file='public/header' /}
+<style type="text/css">
+	/*.table tr td:nth-child(2){
+       width:520px;
+    }
+    .table tr td:nth-child(3){
+        width:580px;
+    }
+	.table tr td:nth-child(5){
+       width:250px;
+    }*/
+	.table tr td:last-child{
+        width:150px;
+    }
+    
+	.main .btn-box {
+        position: static;
+        margin-top: 30px;
+        padding-left: 125px;
+        margin-bottom: 40px;
+    }
+
+	.main .form-group .form-control {
+        width: 600px;
+    }
+
+    .main .form-group textarea.form-control {
+    	width: 600px;
+        height: 120px;
+        resize: none;
+    }
+
+    .form-horizontal .form-group .control-label {
+        display: inline-block;
+	    width: 90px;
+	    font-weight: 100;
+    }
+</style>
+<body>
+	{include file='public/head' /}
+	{include file='public/left' /}
+	<div id="top-alert" class="fixed alert alert-error" style="display: none;">
+		<button class="close fixed" style="margin-top: 4px;">&times;</button>
+		<div class="alert-content"></div>
+	</div>
+	<div class="main">
+	    <div class="main-inner">
+	        <div class="contain">
+	            <p class="page-title">留言管理</p>
+	            <ol class="breadcrumb">
+	                <li><a href="{:url('index/index')}">首页</a></li>
+	                <li><a href="{:url('message/index')}">留言管理</a></li>
+	                <li class="active"><a href="{:url('message/index')}">留言列表</a></li>
+	            </ol>
+	            <ul class="nav nav-tabs">
+	                <li role="presentation" class="active"><a href="javascript:void(0);">留言列表</a></li>
+	            </ul>
+	            <div class="tab-content">
+	                <div class="tab-pane active" id="all">
+	
+	                    <div class="table-box">
+	                        <div class="pane-inner">
+	                        <table class="table">
+	                            <thead>
+	                            <tr>
+	                                <!--<td>ID</td>-->
+	                                <td>序号</td>
+	                                <td>姓名</td>
+	                                <td>电话</td>
+	                                <td>Email</td>
+	                                <td>留言时间</td>
+	                                <td>操作</td>
+	                            </tr>
+	                            </thead>
+	                            <tbody>
+	                            {notempty name="_list"}
+								{volist name="_list" id="vo"}
+								<tr>
+	                                <!--<td><input class="ids" type="hidden" name="id[]" value="{$vo.id}" />{$vo.id}</td>-->
+	                                <td><input class="ids" type="hidden" name="id[]" value="{$vo.id}" />{$i}</td>
+	                                <td>{$vo.name}</td>
+	                                <td>{$vo.mobile}</td>
+	                                <td>{$vo.email}</td>
+	                                <td>{$vo.addtime|date='Y-m-d H:i:s', ###}</td>
+	                                <td>
+										<a class="modify border" href="{:url('show?id='.$vo['id'])}">查看</a>
+									</td>
+	                            </tr>
+	                            {/volist}
+								{else/}
+								<td colspan="6" class="text-center"> aOh! 暂时还没有留言! </td>
+								{/notempty}
+								</tbody>
+	                        </table>
+	                            </div>
+	                        <nav class="text-right">
+	                        	{$_page}
+	                        </nav>
+	                    </div>
+	                </div>
+	            </div>
+	        </div>
+	    </div>
+	
+	</div>
+</body>
+{include file='public/script' /}
+<script type="text/javascript">
+    //导航高亮
+    highlight_subnav('{:url('index')}');
+</script>
+</html>

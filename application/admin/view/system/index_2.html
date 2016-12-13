@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+{include file='public/header' /}
+<style type="text/css">
+	.main .btn-box {
+        position: static;
+        margin-top: 30px;
+        padding-left: 125px;
+        margin-bottom: 40px;
+    }
+
+	.main .form-group .form-control {
+        width: 600px;
+    }
+
+    .main .form-group textarea.form-control {
+    	width: 600px;
+        height: 120px;
+        resize: none;
+    }
+
+    .form-horizontal .form-group .control-label {
+        display: inline-block;
+	    width: 90px;
+	    font-weight: 100;
+    }
+</style>
+<body>
+	{include file='public/head' /}
+	{include file='public/left' /}
+	<div id="top-alert" class="fixed alert alert-error" style="display: none;">
+		<button class="close fixed" style="margin-top: 4px;">&times;</button>
+		<div class="alert-content"></div>
+	</div>
+	<div class="main">
+	    <div class="main-inner">
+	        <div class="contain">
+	            <p class="page-title">系统管理</p>
+	            <ol class="breadcrumb">
+	                <li><a href="{:url('index/index')}">首页</a></li>
+	                <li><a href="{:url('system/index')}">系统管理</a></li>
+	                <li class="active"><a href="{:url('?id=2')}">后台配置</a></li>
+	            </ol>
+	            <ul class="nav nav-tabs">
+	                <li role="presentation"><a href="{:url('')}">网站配置</a></li>
+	                <li role="presentation" class="active"><a href="javascript:void(0);">后台配置</a></li>
+	                <!--<li role="presentation"><a href="{:url('?id=3')}">开发配置</a></li>-->
+	            </ul>
+	            <div class="tab-content">
+	                <div class="tab-pane active" id="add">
+	                    <div class="pane-inner">
+	                    <form class="form-horizontal" action="{:url('save')}">
+	                        <div class="form-group">
+	                            <label for="user_name" class="control-label">后台标题：</label>
+	                            <div class="input-box">
+	                                <input type="text" class="form-control" placeholder="后台标题" name="config[BACKSTAGE_TITLE]" {if condition="isset($cfgs['BACKSTAGE_TITLE'])"}value="{$cfgs.BACKSTAGE_TITLE}"{/if} />
+	                            </div>
+	                        </div>
+	                        <div class="form-group">
+	                            <label for="user_name" class="control-label">后台版本：</label>
+	                            <div class="input-box">
+	                                <input type="text" class="form-control" placeholder="后台版本" name="config[BACKSTAGE_VERSION]" {if condition="isset($cfgs['BACKSTAGE_VERSION'])"}value="{$cfgs.BACKSTAGE_VERSION}"{/if} />
+	                            </div>
+	                        </div>
+	                    </form>
+	                    </div>
+	                    <div class="btn-box">
+	                        <button type="submit" class="btn btn-green ajax-post" id="submit" target-form="form-horizontal">保存</button>
+	                        <button class="btn btn-green" onclick="javascript:history.back(-1);return false;">返回</button>
+	                    </div>
+	                </div>
+	            </div>
+	        </div>
+	    </div>
+	</div>
+</body>
+{include file='public/script' /}
+<script type="text/javascript">
+	//导航高亮
+	highlight_subnav("{:url('system/index')}");
+</script>
+</html>

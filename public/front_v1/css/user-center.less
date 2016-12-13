@@ -1,0 +1,369 @@
+span.icon-guanliyuan{
+  margin-right: 2px;
+}
+span.user{
+  color:#515151;
+}
+section{
+  margin-top: 30px;
+  .center_nav{
+    width:240px;
+    height:690px;
+    border:1px solid #DCDCDC;
+    float: left;
+    padding:35px 60px;
+    background: #FAFAFA ;
+    .sidebar{
+      li{
+        height:40px;
+        a{
+          color:#515151;
+          i.spot{
+            display: inline-block;
+            width:3px;
+            height:3px;
+            background: #515151;
+            border-radius: 50%;
+            margin-right: 9px;
+            position: relative;
+            top:-4px;
+          }
+        }
+        a:hover{
+          text-decoration: none;
+        }
+      }
+      li.active>a{
+        color:#00A496;
+        i.spot{
+          background: #00A496;
+        }
+      }
+      li.unclick{
+        font-size: 18px;
+        margin-bottom: 20px;
+        color: #000000;
+      }
+      li.unclick:not(:first-child){
+        margin-top: 20px;
+      }
+    }
+  }
+  .center_content{
+    width:970px;
+    min-height:690px;
+    border:1px solid #DCDCDC;
+    float: right;
+    padding:35px;
+    position: relative;
+    color: #333;
+    .content-title{
+      font-size: 18px;
+      color:#00A496;
+      padding-bottom: 17px;
+      border-bottom: 1px dashed #DCDCDC;
+      margin-bottom: 30px;
+    }
+    form{
+      position: relative;
+    }
+  }
+}
+section::before,section::after{
+  display: table;
+  content: '';
+  clear: both;
+}
+.form-group{
+  margin-bottom: 20px;
+}
+.form-group>.control-label{
+  width:88px;
+  font-weight: normal;
+  display: inline-block;
+}
+.form-group>div.input-box{
+  width:400px;
+  display: inline-block;
+  margin-left: 36px;
+  margin-right: 5px;
+}
+.form-group>p.prompt{
+  display: inline-block;
+  color:#818181;
+  i{
+    font-style: normal;
+    color:#ff6700;
+    margin-right: 3px;
+  }
+}
+div.input-box>select{
+  width:70px;
+  height:34px;
+  margin-right: 5px;
+  padding-left: 5px;
+}
+div.input-box>select:not(:first-child){
+  margin-left:5px;
+}
+.btn-modify{
+  width:61px;
+  height:34px;
+  border-color: #DCDCDC;
+  background-color: #fafafa;
+  border-radius: 6px;
+  color:#515151;
+}
+.btn-modify:hover{
+  border-color: #DCDCDC;
+  color: #515151;
+}
+.btn-sub{
+  width:100px;
+  height:34px;
+}
+.phone-num{
+  margin-right: 20px;
+}
+.user-img{
+  position: absolute;
+  width:122px;
+  text-align: center;
+  right: 100px;
+  top:0;
+  .img-box{
+    width:120px;
+    height:120px;
+    border:1px solid #DCDCDC;
+    background-color: #FAFAFA;
+    padding:1px;
+    img{
+      width:100%;
+      height:100%;
+    }
+  }
+  div.input-box{
+    width:120px;
+    margin-left: 0 !important;
+    margin-right: 0;
+    margin-top: 20px;
+  }
+}
+#alert{
+  display: none;
+  text-align: center;
+  width:265px;
+  height:110px;
+  line-height: 110px;
+  border:1px solid #DCDCDC;
+  box-shadow: 0 3px 8px #DCDCDC;
+  position: absolute;
+  top:218px;
+  left: 352px;
+  background: #FAFAFA;
+  z-index: 1;
+}
+.safe-item{
+  margin-bottom: 17px;
+  position: relative;
+  height:34px;
+  line-height: 34px;
+  .safe-state{
+    margin-right: 13px;
+    font-size: 12px;
+  }
+  .glyphicon-ok{
+    color:#00A496 ;
+  }
+  .glyphicon-remove{
+    color:#FF6816;
+  }
+  .safe-call{
+    color:#323232;
+    margin-right: 5px;
+    position: relative;
+  }
+  .safe-call::after{
+    display: block;
+    content: '';
+    width:1px;
+    height:12px;
+    background-color: #a0a0a0;
+    position: absolute;
+    top: 4px;
+    right: -8px;
+  }
+  .safe-intr{
+    margin-left: 5px;
+  }
+  .btn-modify{
+    position: absolute;
+    right:370px;
+  }
+}
+section{
+  #update{
+    .nav-tabs{
+      width:314px;
+      height:35px;
+      margin:0 auto;
+      border:none;
+      margin-bottom: 40px;
+      li{
+        a{
+          padding:7px 47px;
+          border-radius: 0;
+          border:1px solid #00A496;
+          margin:0;
+          color: #00A496;
+        }
+        a:hover{
+          background: transparent;
+          border-color: #00A496;
+        }
+      }
+      li.active>a{
+        border:1px solid #00A496;
+        color: #fff;
+      }
+      li.active>a:hover,li.active>a:active,li.active>a:focus{
+        border-color:#00A496;
+        background: #00A496;
+        color: #fff;
+
+      }
+    }
+  }
+
+}
+.code{
+  width:153px;
+  height:33px;
+  position: relative;
+  top:-2px;
+}
+.go-mail{
+  color:#ff6700;
+  border-bottom: 1px solid #ff6700;
+}
+.go-mail:hover{
+  color:#ff6700;
+  border-bottom: 1px solid #ff6700;
+}
+table.table-bordered{
+  width:100%;
+  margin-top: 40px;
+  thead>tr>td{
+    height:64px;
+    background:#f2f2f2 ;
+    border-bottom: 1px;
+    max-height: 64px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    padding-top:0;
+    padding-bottom: 0;
+  }
+  tr>td{
+    height:69px;
+    padding:0 5px;
+    text-align: center;
+  }
+  tr>td:nth-child(1){
+    width:107px;
+    max-width:107px;
+  }
+  tr>td:nth-child(2){
+    width:193px;
+    max-width:193px;
+  }
+  tr>td:nth-child(3){
+    width:228px;
+    max-width:228px;
+  }
+  tr>td:nth-child(4){
+    width:100px;
+    max-width:100px;
+  }
+  tr>td:nth-child(5){
+    width:150px;
+    max-width:150px;
+  }
+  tr>td:nth-child(6){
+    width: 119px;
+    max-width: 119px;
+    a{
+      color: #323232;
+    }
+    a:hover{
+      color:#00A496;
+      border-bottom: 1px solid #00A496;
+    }
+    a.update{
+      margin-right: 7px;
+    }
+    a.update::after{
+      display: inline-block;
+      content: '';
+      height:12px;
+      width:1px;
+      background: #323232;
+      position: relative;
+      top:1px;
+      right:-6px;
+    }
+    a.delete{
+      margin-left: 7px;
+    }
+  }
+}
+
+.textarea-box{
+  vertical-align: text-top;
+}
+.textarea-box>textarea{
+  height:92px;
+  resize: none;
+}
+#areacode,#extension{
+  width:92px;
+  display: inline-block;
+}
+#areacode{
+  margin-right: 5px;
+}
+#extension{
+  margin-left: 5px;
+}
+#phone{
+  width:183px;
+  display: inline-block;
+  margin:0 5px;
+}
+label[for="setdefault"]{
+  margin-left: 50px;
+  font-weight: normal;
+  color: #333;
+  cursor: pointer;
+}
+label>input[type=checkbox]{
+  margin-right: 5px;
+  vertical-align: text-top;
+}
+select.form-control{
+  display: inline-block;
+}
+div.input-box{
+  vertical-align: middle;
+}
+label.check-label:before{
+  position: relative;
+  top:2px;
+}
+select>option:hover{
+  background: #000;
+}
+
+span.cash{
+  margin-left: 20px;
+}
+

@@ -1,0 +1,162 @@
+section{
+    height:445px;
+    padding:40px 85px 20px;
+    /*margin-top: 40px;*/
+}
+.content>.title{
+    height:38px;
+    line-height: 38px;
+    width:1060px;
+    margin:0 auto 60px;
+    text-align: center;
+    position: relative;
+    padding-bottom:2px;
+    border-bottom: 1px dashed #cdcdcd;
+}
+.content>.title-line{
+    width:785px;
+    border:none;
+}
+.content>.title-line>.title-name{
+    left: 332px;
+}
+.title-name{
+    position: absolute;
+    left: 0;
+    height:36px;
+    width:180px;
+    font-size: 20px;
+    text-align: left;
+    padding-left: 43px;
+    background:url("../img/find_pass.png") no-repeat 0 0;
+}
+.content>.title>h3{
+    margin:0;
+    font-weight: normal;
+    height:36px;
+    line-height: 36px;
+}
+.content>.title-line::before,.content>.title-line::after{
+    display: table;
+    content: '';
+    height: 1px;
+    border-bottom: 1px dashed #cdcdcd;
+    width: 320px;
+    position: absolute;
+    top:18px;
+    left: 0;
+}
+.content>.title-line::after{
+    right:0;
+    left: auto;
+}
+form.form-horizontal{
+    text-align: center;
+}
+form.form-horizontal>div.form-group{
+    margin-bottom: 18px;
+}
+form.form-horizontal label{
+    font-weight: normal;
+    display: inline-block;
+    width:70px;
+}
+form.form-horizontal .input-box{
+    width:316px;
+    height:35px;
+    display: inline-block;
+}
+form.form-horizontal .input-box>#verify{
+    width:180px;
+    display: inline-block;
+}
+form.form-horizontal .input-box>.verify_img{
+    width:130px;
+    height:34px;
+    line-height: 34px;
+    position: relative;
+    top:-2px;
+    border:1px solid #cdcdcd;
+}
+form.form-horizontal .input-box>button.verify_img{
+    border-radius: 3px;
+    border:none;
+    line-height: 15px;
+}
+form.form-horizontal .btn-max{
+    width:316px;
+    border-radius: 3px;
+    margin-top: 82px;
+    position: relative;
+    margin-bottom: 25px;
+}
+form.form-horizontal .btn-max::after{
+    display: table;
+    content: '';
+    height: 1px;
+    border-bottom: 1px dashed #cdcdcd;
+    width: 100%;
+    position: absolute;
+    left:0;
+    bottom: -25px;
+}
+form.form-horizontal  div.text-right>a.base-color{
+    margin-left: 10px;
+    position: relative;
+    top:5px;
+    font-size: 12px;
+}
+form.form-horizontal div.text-right>a.base-color:hover{
+    text-decoration: none;
+}
+form.form-horizontal .form-group{
+    position: relative;
+}
+.danger{
+    visibility: hidden;
+    color: #C40000;
+    position: absolute;
+    left: 840px;
+    top:8px;
+}
+i.glyphicon{
+    margin-right: 3px;
+}
+.method_bd>.method-list{
+    width:760px;
+    height:40px;
+    line-height: 40px;
+    text-align: left;
+    border:1px solid #dcdcdc;
+    margin:0 auto 25px;
+    padding-left: 60px;
+    background: url("../img/monitor_left_off.png") no-repeat 13px 3px;
+    position: relative;
+}
+.method_bd>.method-list:nth-child(2){
+    background-position: 15px -63px;
+}
+.method_bd>.method-list:nth-child(3){
+    background-position: 17px -130px;
+}
+.method_bd>.method-list>p{
+    display: inline-block;
+    color: #444444;
+    margin-right: 30px;
+}
+.method_bd>.method-list>span{
+    font-size: 12px;
+    color: #a3a0a0;
+}
+.method_bd>.method-list>a.btn-find{
+    width:55px;
+    height:24px;
+    line-height: 12px;
+    border:none;
+    position: absolute;
+    top:7px;
+    right: 10px;
+    border-left: 2px solid #00a496;
+    background: #e4e4e4;
+    color: #000;
+}

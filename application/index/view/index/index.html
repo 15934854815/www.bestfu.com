@@ -1,0 +1,110 @@
+﻿{include file='public/header' /}
+<link rel="stylesheet" type="text/css" href="__CSS__/slide-2.css" /> 
+<script type="text/javascript" src="__JS__/slide.js"></script>
+<body>
+	<div id="container">
+		{include file='public/head' /}
+		<div id="main">
+			<div class="ca1_slide"> 
+				<div id="slider-wrapper"> 
+					<div id="slider-bg">				
+						<div id="slider-photos">
+							{notempty name="_images"}
+							<div id="slides"> 
+								<div class="slides_container">
+									{volist name="_images" id="vo"}
+									{notempty name="vo.url"}
+									<div class="slide">
+										<a href="{$vo.url}" {eq name="vo.tab" value="0"}target="_blank"{/eq}> 
+											<img src="{$vo.thumb}" width="1060" height="415"/>
+										</a>
+									</div>
+									{else/}
+									<img src="{$vo.thumb}" width="1060" height="415"/>
+									{/notempty}
+									{/volist}
+								</div>
+								<a href="javascript:void(0);" class="prev"><img src="__IMG__/farm/picture17.png"  alt="Arrow Prev" border="0"></a> 
+								<a href="javascript:void(0);" class="next"><img src="__IMG__/farm/picture18.png" alt="Arrow Next" border="0"></a>
+							</div>
+							{/notempty}
+						</div> 
+					</div>
+				</div>
+			</div>
+			<div class="clear"></div>
+			<div id="hotproducts">
+				<span class="topictitle">行业领域</span>
+				<div class="clear"></div>
+				{notempty name="_big"}
+				<ul>
+					{volist name="_big" id="vo"}
+					<li class="lispace {eq name='i' value='1'}fir{/eq}">
+						<a href="{notempty name='vo.url'}{$vo.url}{else/}javascript:alert('正在开发中，请耐心等待！');{/notempty}" {eq name="vo.newtab" value="0"}target="_blank"{/eq}>
+							<img src="{$vo.thumb}" width="520" height="340"/>
+							<span class="{$vo.style}">{$vo.title}</span>
+						</a>
+					</li>
+					{/volist}
+				</ul>
+				{/notempty}
+				{notempty name="_small"}
+				<ul>
+					{volist name="_small" id="vo"}
+					<li class="lispace lispacetop {eq name='i' value='1'}fir{/eq}">
+						<a href="{notempty name='vo.url'}{$vo.url}{else/}javascript:alert('正在开发中，请耐心等待！');{/notempty}" {eq name="vo.newtab" value="0"}target="_blank"{/eq}>
+							<img src="{$vo.thumb}" width="339" height="340"/>
+							<span class="{$vo.style}">{$vo.title}</span>
+						</a>
+					</li>
+					{/volist}
+				</ul>
+				{/notempty}
+			</div>
+		</div>
+		{include file='public/footer' /}
+	</div>
+</body>
+<script type="text/javascript" src="__JS__/website.js"></script>
+<script type="text/javascript">
+	//导航高亮
+	highlight_subnav('{:url('index/index')}');
+	
+	$(document).ready(function(){
+		$('#slides').slides({
+			preload: true,
+			preloadImage: '__IMG__/ajax-loader.gif',
+			effect: 'slide',
+			play: 5000,
+			pause: 2500,
+			hoverPause: true,
+			animationStart: function(current){
+				$('.caption').animate({
+					bottom:0,
+					right: 40,
+					opacity: 0
+				},200);
+			},
+			animationComplete: function(current){
+				$('.caption').animate({
+					bottom:20,
+					right: 40,
+					opacity: 1
+				},200);
+			},
+			slidesLoaded: function() {
+				$('.caption').animate({
+					bottom:20,
+					right: 40,
+					opacity: 1
+				},200);
+			}
+		});
+	                
+		$('#wrapper').bind("mouseleave",function(){
+			$('#header_top_nav').animate({height: 0});
+			$('body').animate({backgroundPosition: '0 -20px'});
+		});
+	});
+</script>
+</html>

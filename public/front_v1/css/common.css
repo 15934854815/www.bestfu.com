@@ -1,0 +1,671 @@
+/*******************  define variables **********************/
+@import "iconfont.css";
+/******************* GLOBAL STYLES *************************/
+* {
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+}
+body {
+  color: #515151;
+  font-family: "microsoft yahei";
+}
+header {
+  margin: 5px 0 0 0;
+}
+header:after {
+  display: table;
+  content: '';
+  clear: both;
+}
+a {
+  cursor: pointer;
+  color: inherit;
+}
+a:hover {
+  cursor: pointer;
+}
+a:active,
+a:focus {
+  color: inherit;
+  outline: none;
+  text-decoration: none;
+}
+input::-webkit-input-placeholder,
+textarea::-webkit-input-placeholder {
+  color: #a3a0a0;
+}
+input:-moz-placeholder,
+textarea:-moz-placeholder {
+  color: #a3a0a0;
+}
+input::-moz-placeholder,
+textarea::-moz-placeholder {
+  color: #a3a0a0;
+}
+input:-ms-input-placeholder,
+textarea:-ms-input-placeholder {
+  color: #a3a0a0;
+}
+/************** overwrite *******************/
+/*  navbar style */
+header .navbar {
+  margin-bottom: 0;
+}
+header .navbar .container {
+  padding: 0;
+}
+header .navbar .navbar-nav:last-child li > a {
+  color: #515151;
+  padding-left: 25px;
+  padding-right: 25px;
+}
+header .navbar .navbar-nav:last-child li > a:hover,
+header .navbar .navbar-nav:last-child li > a:focus,
+header .navbar .navbar-nav:last-child li.active > a {
+  color: #00a496;
+  background-color: transparent;
+}
+header .navbar .navbar-nav:first-child {
+  margin-left: 9px;
+  margin-right: 15px;
+}
+header .navbar .navbar-nav:first-child .dropdown-menu {
+  z-index: 1001;
+  border-top: 2px solid #00a496;
+  width: 145px;
+}
+header .navbar .navbar-nav:first-child .dropdown-menu .divider {
+  margin: 5px 0;
+}
+header .navbar .navbar-nav:first-child .dropdown-menu a {
+  text-align: center;
+  height: 45px;
+  line-height: 45px;
+}
+header .navbar .navbar-nav:first-child .dropdown-menu > li > a:focus,
+header .navbar .navbar-nav:first-child .dropdown-menu > li > a:hover {
+  background: none;
+  color: #00a496;
+}
+header .navbar .navbar-nav:first-child > li > a {
+  padding: 15px 5px;
+  display: inline-block;
+  min-width: 34px;
+  height: 52px;
+  text-align: center;
+  vertical-align: middle;
+}
+header .navbar .navbar-nav:first-child > li > a span.iconfont:first-child {
+  display: inline-block;
+  width: 22px;
+  height: 22px;
+  background-color: #c0c0c0;
+  color: #fff;
+  font-size: 14px;
+  border-radius: 50%;
+  vertical-align: top;
+}
+header .navbar .navbar-nav:first-child > li > a span.icon-jiantou-copy {
+  color: #c0c0c0;
+}
+header .navbar .navbar-nav:first-child > li > a span.icon-gouwuche:before {
+  position: relative;
+  top: 1px;
+}
+header .navbar .navbar-nav:first-child > li > a span.icon-icon-regist:before {
+  position: relative;
+  left: 1px;
+  top: 1px;
+}
+header .navbar .navbar-nav:first-child > li > a#login:hover > span.icon-jiantou-copy {
+  color: #00a496;
+}
+header .navbar .navbar-nav:first-child > li > a:hover,
+header .navbar .navbar-nav:first-child > li > a:focus,
+header .navbar .navbar-nav:first-child > li > a:active {
+  background-color: transparent;
+}
+header .navbar .navbar-nav:first-child > li.active > a > span.iconfont:first-child {
+  background-color: #00a496;
+}
+header .navbar #navbar .shop-cart a {
+  position: relative;
+}
+header .navbar #navbar .shop-cart a span.shop-num {
+  position: absolute;
+  right: 0;
+  top: 5px;
+  color: #FF6700;
+  font-size: 10px;
+}
+header .navbar #navbar .login a span.iconfont:last-child {
+  font-size: 20px;
+}
+.navbar-brand {
+  width: 164px;
+  background: url("../img/logo.png") no-repeat 15px 5px;
+}
+.navbar-nav.navbar-left > p {
+  font-size: 28px;
+  height: 50px;
+  line-height: 50px;
+  margin-bottom: 0;
+  margin-left: 30px;
+}
+/* navbar style over*/
+.container {
+  padding-left: 0;
+  padding-right: 0;
+  width: 1240px;
+}
+.container .nav-tabs > li.active > a,
+.container .nav-tabs > li.active > a:focus,
+.container .nav-tabs > li.active > a:hover {
+  background: #00a496;
+  color: #fff;
+  margin: 0 auto;
+}
+footer {
+  width: 100%;
+  height: 160px;
+  background: #f2f2f2;
+  margin-top: 40px;
+}
+footer .container {
+  height: 160px;
+  padding: 40px 0;
+  color: #858585;
+}
+footer .container .pull-left {
+  padding: 20px 0;
+}
+footer .container .pull-left .list-inline > li {
+  padding: 0 15px;
+  border-left: 1px solid #d9d9d9;
+}
+footer .container .pull-left .list-inline > li:first-child {
+  padding-left: 5px;
+  border-left: 0;
+}
+footer .container .pull-left .list-inline > li > a {
+  color: #858585;
+}
+footer .container h4 {
+  margin-top: 20px;
+}
+.support {
+  width: 1240px;
+  margin: 0 auto;
+  margin-top: 50px;
+}
+.support p {
+  font-size: 22px;
+  font-weight: 500;
+}
+.support .row {
+  margin: 0 -50px;
+}
+.support .row .col-xs-4 {
+  padding: 0 50px;
+}
+li.dropdown:hover .dropdown-menu {
+  display: block;
+}
+.dropdown-menu {
+  margin-top: 0;
+  margin-right: -50px;
+}
+.dropdown-menu:hover {
+  display: block;
+}
+.form-control,
+select {
+  border-color: #dcdcdc;
+  border-radius: 0;
+}
+a:hover {
+  text-decoration: none;
+  color: inherit;
+}
+select,
+select.form-control {
+  appearance: none;
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  /*在选择框的最右侧中间显示小箭头图片*/
+  background: url("../img/arrow.png") no-repeat right 5px center transparent;
+  /*为下拉小箭头留出一点位置，避免被文字覆盖*/
+  padding-right: 16px;
+  background: none \9;
+  padding: 0 \9;
+}
+select:active > option {
+  box-shadow: none;
+  outline: none;
+  border: none;
+}
+/*清除ie的默认选择框样式清除，隐藏下拉箭头*/
+select::-ms-expand {
+  display: none;
+}
+/********************** overwrite over*************************/
+.font-18 {
+  font-size: 18px;
+}
+.font-16 {
+  font-size: 16px;
+}
+.font-12 {
+  font-size: 12px;
+}
+.light-gray {
+  color: #d9d9d9;
+}
+.base-color {
+  color: #00a496;
+}
+.base-color:hover {
+  color: #00a496;
+}
+.base-background {
+  background: #00a496;
+}
+.light-border {
+  border: 1px solid #dcdcdc;
+}
+.img-box {
+  padding: 2px;
+  border: 1px solid #dcdcdc;
+}
+.green-line {
+  position: relative;
+  width: 100%;
+  height: 2px;
+  background: #00a496;
+}
+.btn {
+  border-radius: 0;
+  border-color: #00a496;
+  color: #00a496;
+  background: transparent;
+}
+.btn:hover {
+  color: #04cdbc;
+  border-color: #04cdbc;
+  outline: none;
+}
+.btn:focus {
+  color: #00a496;
+  border-color: #00a496;
+  outline: none;
+}
+.btn:disabled {
+  background: #04cdbc;
+  border: #04cdbc;
+}
+.btn-green {
+  background: #00a496;
+  color: #fff;
+}
+.btn-green:focus {
+  color: #fff;
+}
+.btn-green:hover {
+  background: #04cdbc;
+  color: #fff;
+  border-color: #04cdbc;
+}
+.btn-max {
+  width: 317px;
+  height: 35px;
+  line-height: 20px;
+}
+.btn-lg {
+  width: 201px;
+  height: 63px;
+  line-height: 42px;
+}
+.btn-md {
+  width: 181px;
+  height: 40px;
+  line-height: 28px;
+}
+.btn-sm {
+  width: 131px;
+  height: 33px;
+  line-height: 20px;
+}
+.btn-min {
+  width: 101px;
+  height: 23px;
+  line-height: 10px;
+  box-shadow: 2px 2px #027F74;
+}
+.btn-radius {
+  border-radius: 3px;
+}
+.orange {
+  color: #ff6700;
+}
+.btn-min {
+  overflow: hidden;
+  cursor: pointer;
+  position: relative;
+}
+.btn-min input[type=file] {
+  opacity: 0;
+  font-size: 36px;
+  position: absolute;
+  top: 0;
+  right: 0;
+  z-index: 9;
+  cursor: pointer;
+  height: 23px;
+}
+/***************单选框****************/
+label.radio-inline::before {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  font-family: iconfont;
+  content: '\e600';
+  color: #979797;
+  position: relative;
+  left: 0;
+  top: 0;
+  font-size: 18px;
+  margin-right: 5px;
+}
+label.radio-inline.active::before {
+  content: '\e601';
+  color: #00a496;
+}
+.radio-inline + .radio-inline {
+  margin-left: 50px;
+}
+label.radio-inline input[type=radio] {
+  display: inline-block;
+  opacity: 0;
+}
+label.check-label input[type=checkbox] {
+  display: none;
+}
+label.check-label::before {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  font-family: iconfont;
+  content: '\e61f';
+  color: #c9c9c9;
+  font-weight: normal;
+  font-size: 18px;
+  position: relative;
+  top: 2px;
+}
+label.check-label.active::before {
+  content: '\e624';
+  color: #00a496;
+}
+/**********数字框***********/
+.num-box {
+  display: inline-block;
+  position: relative;
+  width: 64px;
+}
+.num-box input {
+  width: 43px;
+  height: 31px;
+  background: transparent;
+  border: 1px solid #C9C9C9;
+  text-align: center;
+}
+.num-box input:focus {
+  outline: none;
+}
+.num-box button {
+  width: 18px;
+  height: 14px;
+  border: 1px solid #C9C9C9;
+  background: transparent;
+  font-size: 10px;
+  position: absolute;
+  right: 0;
+  top: -1px;
+  padding: 0;
+  text-align: center;
+}
+.num-box button:before {
+  position: relative;
+  top: -2px;
+}
+.num-box button:last-child {
+  top: auto;
+  bottom: 1px;
+}
+.num-box button:active {
+  background-color: #eee;
+}
+.form-horizontal .control-label {
+  vertical-align: top;
+}
+.border-b > div.input-box {
+  padding-top: 7px;
+}
+/*img-modal*/
+.img-modal .modal-dialog {
+  min-width: 638px;
+  margin-top: 150px;
+}
+.img-modal .modal-dialog .modal-content {
+  border: 1px solid #fafafa;
+  background-color: transparent;
+  position: relative;
+  border-radius: 0;
+}
+.img-modal .modal-dialog .modal-content .modal-header {
+  position: absolute;
+  right: 0;
+  top: 0;
+  border: none;
+  z-index: 3000;
+}
+.img-modal .modal-dialog .modal-content .modal-header span.icon-guanbi {
+  color: #666666;
+}
+.img-modal .modal-dialog .modal-content .modal-body {
+  padding: 9px;
+}
+.img-modal .modal-dialog .modal-content .modal-body img {
+  min-width: 620px;
+}
+nav.text-right {
+  margin-top: 12px;
+}
+nav.text-right .page li {
+  padding-right: 0;
+  padding-left: 0;
+}
+nav.text-right .page li > a {
+  display: inline-block;
+  border: 1px solid #e5e5e5;
+  padding: 2px 5px;
+  color: #515151;
+  text-align: center;
+}
+nav.text-right .page li.active > a {
+  background: #00A496;
+  color: #fff;
+  border-color: #00A496;
+}
+nav.text-right .page li:first-child > a {
+  min-width: 54px;
+}
+.modal-dialog:not(.not .modal-dialog) {
+  margin-top: 300px;
+  width: 630px;
+}
+.modal-dialog:not(.not .modal-dialog) .modal-content {
+  border-radius: 0;
+}
+.modal-dialog:not(.not .modal-dialog) .modal-content .modal-header {
+  border-bottom: 1px dashed #00A496;
+  padding-left: 0;
+  padding-bottom: 10px;
+}
+.modal-dialog:not(.not .modal-dialog) .modal-content .modal-header .modal-title {
+  font-size: 20px;
+  margin-bottom: 0;
+  color: #00A496;
+}
+.modal-dialog:not(.not .modal-dialog) .modal-content .modal-footer {
+  border: none;
+  text-align: center;
+  padding: 10px 0 0 0;
+}
+.modal-dialog:not(.not .modal-dialog) .modal-content .modal-footer .btn {
+  width: 100px;
+  height: 34px;
+  margin: 0 15px;
+}
+#after_sale .modal-content {
+  width: 630px;
+  height: 345px;
+  padding: 20px 68px 40px;
+}
+#after_sale .modal-body {
+  padding: 25px 0 0 15px;
+}
+#after_sale .modal-body .form-group {
+  margin-bottom: 15px;
+}
+#after_sale .modal-body .form-group .control-label {
+  width: 70px;
+}
+#after_sale .modal-body .form-group .input-box {
+  width: 411px;
+  margin: 0 5px;
+  vertical-align: text-top;
+}
+#after_sale .modal-body .form-group .input-box textarea.form-control {
+  height: 100px;
+  resize: none;
+  vertical-align: sub;
+}
+#add_order .modal-content,
+#send_msg .modal-content {
+  width: 630px;
+  height: 240px;
+  padding: 20px 68px 40px;
+  border: 1px solid #e5e5e5;
+  position: relative;
+}
+#add_order .modal-header button.close,
+#send_msg .modal-header button.close {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+}
+#add_order .modal-body,
+#send_msg .modal-body {
+  padding: 25px 0 0 15px;
+  text-align: center;
+}
+#add_order .modal-body .input-box,
+#send_msg .modal-body .input-box {
+  width: 411px;
+  margin: 0;
+}
+#cancel_order .modal-content,
+#delete_card .modal-content,
+#receipt_order .modal-content,
+#delete_order .modal-content,
+.delete .modal-content {
+  width: 490px;
+  height: 190px;
+  padding: 25px 54px 40px;
+}
+#cancel_order .modal-content .modal-header,
+#delete_card .modal-content .modal-header,
+#receipt_order .modal-content .modal-header,
+#delete_order .modal-content .modal-header,
+.delete .modal-content .modal-header {
+  text-align: center;
+}
+#cancel_order .modal-content .modal-footer,
+#delete_card .modal-content .modal-footer,
+#receipt_order .modal-content .modal-footer,
+#delete_order .modal-content .modal-footer,
+.delete .modal-content .modal-footer {
+  padding-top: 40px;
+}
+.done .modal-content {
+  width: 578px;
+  height: 473px;
+  padding: 20px 68px 40px;
+  position: relative;
+}
+.done .modal-content .modal-header button.close {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+}
+.done .modal-content .modal-body {
+  padding: 25px 0 0 0;
+}
+.done .modal-content .modal-body .form-group {
+  margin-bottom: 15px;
+}
+.done .modal-content .modal-body .form-group .control-label {
+  width: 70px;
+}
+.done .modal-content .modal-body .form-group .input-box {
+  width: 365px;
+  margin: 0;
+  vertical-align: text-top;
+}
+.done .modal-content .modal-body .form-group .input-box .form-control {
+  width: 365px;
+}
+.done .modal-content .modal-body .form-group .input-box textarea.form-control {
+  height: 180px;
+  resize: none;
+  vertical-align: sub;
+}
+.done .modal-content .modal-footer {
+  text-align: left;
+  padding-left: 78px;
+}
+.done .modal-content .modal-footer .btn {
+  margin: 0;
+}
+.set .modal-content {
+  width: 418px;
+  height: 310px;
+  padding: 20px 64px 40px;
+  position: relative;
+}
+.set .modal-content .modal-header button.close {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+}
+.set .modal-content .modal-body {
+  padding: 25px 0 0 0;
+}
+.set .modal-content .modal-body .form-group + .form-group {
+  margin-left: 0;
+}
+.set .modal-content .modal-body .form-group {
+  margin-bottom: 20px;
+}
+.set .modal-content .modal-body .form-group .check-label {
+  color: #666;
+}
+.set .modal-content .modal-body .col-xs-4 {
+  padding-right: 0;
+  margin-right: -2px;
+}
+.set .modal-content .modal-footer {
+  padding-top: 40px;
+}

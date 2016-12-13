@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+{include file='public/header' /}
+<style type="text/css">
+	.main .btn-box {
+        position: static;
+        margin-top: 30px;
+        padding-left: 125px;
+        margin-bottom: 40px;
+    }
+
+	.main .form-group .form-control {
+        width: 500px;
+    }
+
+    .main .form-group select.form-control {
+    	width: 70%;
+    }
+
+    .form-horizontal .form-group .control-label {
+        display: inline-block;
+	    width: 90px;
+	    font-weight: 100;
+    }
+    
+    .form-group  label.radio-inline:before{
+        top:1px;
+    }
+    .form-group  label.radio-inline{
+        margin-top: 2px;
+    }
+</style>
+<body>
+	{include file='public/head' /}
+	{include file='public/left' /}
+	<div id="top-alert" class="fixed alert alert-error" style="display: none;">
+		<button class="close fixed" style="margin-top: 4px;">&times;</button>
+		<div class="alert-content"></div>
+	</div>
+	<div class="main">
+	    <div class="main-inner">
+	        <div class="contain">
+	            <p class="page-title">用户管理</p>
+	            <ol class="breadcrumb">
+	                <li><a href="{:url('index/index')}">首页</a></li>
+	                <li><a href="{:url('user/index')}">用户管理</a></li>
+	                <li class="active"><a href="{:url('user/add')}">添加用户</a></li>
+	            </ol>
+	            <ul class="nav nav-tabs">
+	                <li role="presentation"><a href="{:url('user/index')}">用户列表</a></li>
+	                <li role="presentation" class="active"><a href="javascript:void(0);">添加用户</a></li>
+	            </ul>
+	            <div class="tab-content">
+	                <div class="tab-pane active" id="add">
+	                    <div class="pane-inner">
+	                    <form class="form-horizontal" action="{:url('')}">
+	                        <div class="form-group">
+	                            <label for="user_name" class="control-label">用户名：</label>
+	                            <div class="input-box">
+	                                <input type="text" class="form-control" name="username" placeholder="4-32位数字字母组合" maxlength="32" />
+	                            </div>
+	                        </div>
+	                        <div class="form-group">
+	                            <label for="user_name" class="control-label">密码：</label>
+	                            <div class="input-box">
+	                                <input type="password" class="form-control" name="password" />
+	                            </div>
+	                        </div>
+	                        <div class="form-group">
+	                            <label for="user_name" class="control-label">确认密码：</label>
+	                            <div class="input-box">
+	                                <input type="password" class="form-control" name="repassword" />
+	                            </div>
+	                        </div>
+	                        <div class="form-group">
+	                            <label for="user_name" class="control-label">角色：</label>
+	                            <div class="input-box">
+	                                <select name="role_id" class="form-control">
+	                                	{notempty name="_roles"}
+	                                	{volist name="_roles" id="vo"}
+	                                    <option value="{$vo.id}">{$vo.name}</option>
+	                                    {/volist}
+	                                    {/notempty}
+	                                </select>
+	                            </div>
+	                        </div>
+	                        <div class="form-group">
+	                            <label for="user_name" class="control-label">用户状态：</label>
+	                            <div class="input-box">
+	                                <label for="yes" class="radio-inline"><input type="radio" name="status" value="0" id="yes" checked="checked"/>正常</label>
+                                	<label for="no" class="radio-inline"><input type="radio" name="status" value="1" id="no"/>禁用</label>
+	                            </div>
+	                        </div>
+	                    </form>
+	                    </div>
+	                    <div class="btn-box">
+	                        <button type="submit" class="btn btn-green ajax-post" id="submit" target-form="form-horizontal">保存</button>
+	                        <button class="btn btn-green" onclick="javascript:history.back(-1);return false;">返回</button>
+	                    </div>
+	                </div>
+	            </div>
+	        </div>
+	    </div>
+	</div>
+</body>
+{include file='public/script' /}
+<script type="text/javascript">
+	//导航高亮
+	highlight_subnav("{:url('user/index')}");
+</script>
+</html>

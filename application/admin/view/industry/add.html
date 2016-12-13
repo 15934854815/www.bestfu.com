@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html>
+{include file='public/header' /}
+<style type="text/css">
+	.main .btn-box {
+        position: static;
+        margin-top: 30px;
+        padding-left: 125px;
+        margin-bottom: 40px;
+    }
+
+	.main .form-group .form-control {
+        width: 500px;
+    }
+
+    .main .form-group select.form-control {
+    	width: 70%;
+    }
+
+    .form-horizontal .form-group .control-label {
+        display: inline-block;
+	    width: 90px;
+	    font-weight: 100;
+    }
+    
+    .form-group  label.radio-inline:before{
+        top:1px;
+    }
+    .form-group  label.radio-inline{
+        margin-top: 2px;
+    }
+</style>
+<body>
+	{include file='public/head' /}
+	{include file='public/left' /}
+	<div id="top-alert" class="fixed alert alert-error" style="display: none;">
+		<button class="close fixed" style="margin-top: 4px;">&times;</button>
+		<div class="alert-content"></div>
+	</div>
+	<div class="main">
+	    <div class="main-inner">
+	        <div class="contain">
+	            <p class="page-title">行业领域</p>
+	            <ol class="breadcrumb">
+	                <li><a href="{:url('index/index')}">首页</a></li>
+	                <li><a href="{:url('industry/index')}">行业领域</a></li>
+	                <li class="active"><a href="{:url('add')}">添加行业领域</a></li>
+	            </ol>
+	            <ul class="nav nav-tabs">
+	                <li role="presentation"><a href="{:url('industry/index')}">行业领域列表</a></li>
+	                <li role="presentation" class="active"><a href="javascript:void(0);">添加行业领域</a></li>
+	            </ul>
+	            <div class="tab-content">
+	                <div class="tab-pane active" id="add">
+	                    <div class="pane-inner">
+	                    <form class="form-horizontal" action="{:url('')}">
+	                        <div class="form-group">
+	                            <label for="user_name" class="control-label">标题：</label>
+	                            <div class="input-box">
+	                                <input type="text" class="form-control" name="title" maxlength="64" />
+	                            </div>
+	                        </div>
+	                        <div class="form-group">
+	                            <label for="user_name" class="control-label">背景图片：</label>
+	                            <div class="input-box">
+									<div class="upload-img-box" >
+									<div class="upload-pre-item" style="padding-bottom: 5px;"></div>
+									</div>
+									<input type="hidden" name="thumb" id="cover_id_thumb" />
+									<button type="button" class="btn btn-green btn-min uploadimg">上传图片</button>
+								</div>
+	                        </div>
+	                        <div class="form-group">
+	                            <label for="user_name" class="control-label">排序：</label>
+	                            <div class="input-box">
+	                                <input type="text" class="form-control" name="sort" />
+	                            </div>
+	                        </div>
+	                        <div class="form-group">
+	                            <label for="user_name" class="control-label">样式：</label>
+	                            <div class="input-box">
+	                                <input type="text" class="form-control" name="style" />
+	                            </div>
+	                        </div>
+	                        <div class="form-group">
+	                            <label for="user_name" class="control-label">链接地址：</label>
+	                            <div class="input-box">
+	                                <input type="text" class="form-control" name="url" />
+	                            </div>
+	                        </div>
+	                        <div class="form-group">
+	                            <label for="user_name" class="control-label">新窗口打开：</label>
+	                            <div class="input-box">
+	                                <label for="yes_tab" class="radio-inline"><input type="radio" name="newtab" value="0" id="yes_tab" checked="checked"/>是</label>
+                                	<label for="no_tab" class="radio-inline"><input type="radio" name="newtab" value="1"  id="no_tab"/>否</label>
+	                            </div>
+	                        </div>
+	                        <div class="form-group">
+	                            <label for="user_name" class="control-label">位置：</label>
+	                            <div class="input-box">
+	                                <label for="yes_location" class="radio-inline"><input type="radio" name="location" value="0" id="yes_location" checked="checked"/>大图标</label>
+                                	<label for="no_location" class="radio-inline"><input type="radio" name="location" value="1"  id="no_location"/>小图标</label>
+	                            </div>
+	                        </div>
+	                        <div class="form-group">
+	                            <label for="user_name" class="control-label">状态：</label>
+	                            <div class="input-box">
+	                                <label for="yes" class="radio-inline"><input type="radio" name="status" value="0" id="yes" checked="checked"/>显示</label>
+                                	<label for="no" class="radio-inline"><input type="radio" name="status" value="1"  id="no"/>关闭</label>
+	                            </div>
+	                        </div>
+	                    </form>
+	                    </div>
+	                    <div class="btn-box">
+	                        <button type="submit" class="btn btn-green ajax-post" id="submit" target-form="form-horizontal">保存</button>
+	                        <button class="btn btn-green" onclick="javascript:history.back(-1);return false;">返回</button>
+	                    </div>
+	                </div>
+	            </div>
+	        </div>
+	    </div>
+	</div>
+</body>
+{include file='public/script' /}
+<script type="text/javascript" src="__PUBLIC__/front_v1/js/plupload-2.1.8/plupload.full.min.js"></script>
+<script type="text/javascript" src="__PUBLIC__/front_v1/js/plupload-2.1.8/i18n/zh_CN.js"></script>
+<script type="text/javascript" src="__PUBLIC__/front_v1/js/jquery.uploader.js"></script>
+<script type="text/javascript">
+	//导航高亮
+	highlight_subnav("{:url('index')}");
+	
+	$('.uploadimg').each(function(){
+		var obj = $(this);
+		var _param = {};
+		_param.url = "{:url('file/upload_picture')}";
+		_param.file_data_name = 'image';
+		obj.uploader(
+			_param,
+			function(ok){
+				if (ok && ok.code == 1) {
+					var src = ok.data.filepath;
+					console.log(src);
+					$("#cover_id_thumb").val(ok.data.filepath);
+					obj.parent()[0].style.paddingTop="10px";
+					obj.parent().find('.upload-pre-item').html('<img src="'+src+'" />');
+				} else 
+					alert(ok.info);
+			},
+			function(err){alert(err);}
+		);
+	});
+</script>
+</html>

@@ -1,0 +1,71 @@
+<!-- HEADER begin -->
+<style type="text/css">
+.navbar .user-bar {
+    position: relative;
+    float: right;
+    margin-right: 20px;
+}
+.navbar .user-bar .user-entrance {
+    display: block;
+    margin-top: 15px;
+    padding-bottom: 15px;
+    width: 20px;
+    height: 20px;
+    background: url(__IMG__/bg_icon.png) no-repeat -150px 0;
+}
+.navbar .user-bar .user-entrance:hover {
+    border-bottom: 0 none;
+    text-decoration: none;
+}
+.navbar .user-menu {
+    position: absolute;
+    top: 50px;
+    right: -8px;
+    width: 140px;
+    border: 1px solid #ddd;
+    background-color: #fff;
+}
+.navbar .user-menu li {
+    height: 30px;
+    line-height: 30px;
+    border-bottom: 1px solid #ddd;
+}
+.navbar .user-menu a {
+    padding: 0 15px;
+}
+.navbar .user-menu a:hover {
+    color: #424242;
+    background-color: #f5f5f5;
+}
+.navbar .user-menu .manager {
+    padding: 0 15px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+.navbar ul {
+	margin:0;
+	padding:0;
+	list-style:none;
+}
+</style>
+<nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="{:url('index/index')}"></a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+            <div class="user-bar">
+	            <a href="javascript:;" class="user-entrance"><i class="icon-user"></i></a>
+	            <ul class="nav-list user-menu hidden">
+	                <li class="manager">你好，<em title="{:session('user_auth.username')}">{:session('user_auth.username')}</em></li>
+	                <li><a href="{:url('index/password')}">修改密码</a></li>
+	                <li><a href="{:url('login/logout')}">退出</a></li>
+	            </ul>
+	        </div>
+            <div class="nav navbar-nav navbar-left">
+                <p>管理中心</p>
+            </div>
+        </div>
+    </div>
+</nav>

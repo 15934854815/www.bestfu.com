@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html>
+{include file='public/header' /}
+<style type="text/css">
+	.table tr td:last-child{
+        width:250px;
+    }
+    
+	.main .btn-box {
+        position: static;
+        margin-top: 30px;
+        padding-left: 125px;
+        margin-bottom: 40px;
+    }
+
+	.main .form-group .form-control {
+        width: 600px;
+    }
+
+    .main .form-group textarea.form-control {
+    	width: 600px;
+        height: 120px;
+        resize: none;
+    }
+
+    .form-horizontal .form-group .control-label {
+        display: inline-block;
+	    width: 90px;
+	    font-weight: 100;
+    }
+    
+    .done .modal-content {
+        height:500px;
+    }
+</style>
+<body>
+	{include file='public/head' /}
+	{include file='public/left' /}
+	<div id="top-alert" class="fixed alert alert-error" style="display: none;">
+		<button class="close fixed" style="margin-top: 4px;">&times;</button>
+		<div class="alert-content"></div>
+	</div>
+	<div class="main">
+	    <div class="main-inner">
+	        <div class="contain">
+	            <p class="page-title">菜单管理</p>
+	            <ol class="breadcrumb">
+	                <li><a href="{:url('index/index')}">首页</a></li>
+	                <li><a href="{:url('menu/index')}">前台菜单管理</a></li>
+	                <li class="active"><a href="{:url('menu/index')}">前台菜单列表</a></li>
+	            </ol>
+	            <ul class="nav nav-tabs">
+	                <li role="presentation" class="active"><a href="javascript:void(0);">前台菜单列表</a></li>
+	                <li role="presentation"><a href="{:url('add')}">添加前台菜单</a></li>
+	            </ul>
+	            <div class="tab-content">
+	                <div class="tab-pane active" id="all">
+	
+	                    <div class="table-box">
+	                        <div class="pane-inner">
+	                        <table class="table">
+	                            <thead>
+	                            <tr>
+	                                <!--<td>ID</td>-->
+	                                <td>序号</td>
+	                                <td>标题</td>
+	                                <td>URL</td>
+	                                <td>排序</td>
+	                                <td>状态</td>
+	                                <td>头部显示</td>
+	                                <td>底部显示</td>
+	                                <td>操作</td>
+	                            </tr>
+	                            </thead>
+	                            <tbody>
+	                            {notempty name="_list"}
+								{volist name="_list" id="vo"}
+								<tr>
+	                                <!--<td><input class="ids" type="hidden" name="id[]" value="{$vo.id}" />{$vo.id}</td>-->
+	                                <td>{$i}</td>
+	                                <td>{$vo.title}</td>
+	                                <td>{$vo.url}</td>
+	                                <td>{$vo.sort}</td>
+	                                <td>{$vo.status_text}</td>
+	                                <td>{$vo.ishead_text}</td>
+	                                <td>{$vo.isfoot_text}</td>
+	                                <td>
+										<a class="modify border" data-toggle="modal" data-target="#modify_menu_{$vo.id}">修改</a>
+										<a href="{:url('status',array('id'=>$vo['id'],'value'=>abs($vo['status']-1)))}" class="stop ajax-get border">{eq name="vo.status" value="0"}禁用{else/}启用{/eq}</a>
+										<a class="delete delete_line border" data-toggle="modal" data-target="#delete_menu_{$vo.id}">删除</a>
+									</td>
+	                            </tr>
+	                            {/volist}
+								{else/}
+								<td colspan="8" class="text-center"> aOh! 暂时还没有内容! </td>
+								{/notempty}
+								</tbody>
+	                        </table>
+	                            </div>
+	                        <nav class="text-right">
+	                        	{$_page}
+	                        </nav>
+	                    </div>
+	                </div>
+	            </div>
+	            {notempty name="_list"}
+	            {volist name="_list" id="vo"}
+	            <!-- 修改 -->
+	            <div class="modal fade done" id="modify_menu_{$vo.id}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+	                <div class="modal-dialog" role="document">
+	                    <div class="modal-content">
+	                        <div class="modal-header">
+	                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+	                                    class="iconfont icon-guanbi"></span></button>
+	                            <p class="modal-title">前台菜单修改</p>
+	                        </div>
+	                        <div class="modal-body">
+	                            <form class="form-horizontal edit-menu-{$vo.id}" action="{:url('edit')}">
+	                                <div class="form-group">
+	                                    <label class="control-label">标题：</label>
+	                                    <div class="input-box">
+	                                        <input type="text" class="form-control" name="title" value="{$vo.title}" placeholder="前台菜单显示的名称" />
+	                                    </div>
+	                                </div>
+	                                <div class="form-group">
+	                                    <label class="control-label">链接：</label>
+	                                    <div class="input-box">
+	                                        <input type="text" class="form-control" name="url" value="{$vo.url}" placeholder="U函数解析的URL" />
+	                                    </div>
+	                                </div>
+	                                <div class="form-group">
+	                                    <label class="control-label">排序：</label>
+	                                    <div class="input-box">
+	                                        <input type="text" class="form-control" name="sort" value="{$vo.sort}" placeholder="用于前台菜单显示的顺序" />
+	                                    </div>
+	                                </div>
+	                                <div class="form-group">
+	                                    <label for="role_des" class="control-label">状态：</label>
+	                                    <div class="input-box radio">
+	                                        <label for="yes_{$vo.id}" class="radio-inline"><input type="radio" name="status" value="0" id="yes_{$vo.id}" {eq name="vo.status" value="0"}checked{/eq} />启用</label>
+	                                        <label for="no_{$vo.id}" class="radio-inline"><input type="radio" name="status" value="1" id="no_{$vo.id}" {eq name="vo.status" value="1"}checked{/eq} />禁用</label>
+	                                    </div>
+	                                </div>
+	                                <div class="form-group">
+	                                    <label for="role_des" class="control-label">头部显示：</label>
+	                                    <div class="input-box radio">
+	                                        <label for="yes_ishead_{$vo.id}" class="radio-inline"><input type="radio" name="ishead" value="0" id="yes_ishead_{$vo.id}" {eq name="vo.ishead" value="0"}checked{/eq} />是</label>
+	                                        <label for="no_ishead_{$vo.id}" class="radio-inline"><input type="radio" name="ishead" value="1" id="no_ishead_{$vo.id}" {eq name="vo.ishead" value="1"}checked{/eq} />否</label>
+	                                    </div>
+	                                </div>
+	                                <div class="form-group">
+	                                    <label for="role_des" class="control-label">底部显示：</label>
+	                                    <div class="input-box radio">
+	                                        <label for="yes_foot_{$vo.id}" class="radio-inline"><input type="radio" name="isfoot" value="0" id="yes_foot_{$vo.id}" {eq name="vo.isfoot" value="0"}checked{/eq} />是</label>
+	                                        <label for="no_foot_{$vo.id}" class="radio-inline"><input type="radio" name="isfoot" value="1" id="no_foot_{$vo.id}" {eq name="vo.isfoot" value="1"}checked{/eq} />否</label>
+	                                    </div>
+	                                </div>
+	                                <div class="form-group">
+	                                    <label class="control-label">说明：</label>
+	                                    <div class="input-box">
+	                                        <input type="text" class="form-control" name="remark" value="{$vo.remark}" placeholder="前台菜单详细说明" />
+	                                    </div>
+	                                </div>
+									<input type="hidden" name="id" value="{$vo.id}" />
+	                            </form>
+	                        </div>
+	                        <div class="modal-footer">
+	                            <button type="submit" class="btn btn-green ajax-post" target-form="edit-menu-{$vo.id}">提交</button>
+	                        </div>
+	                    </div>
+	                </div>
+	            </div>
+	            <!-- 删除 -->
+	            <div class="modal fade delete" id="delete_menu_{$vo.id}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+	                <div class="modal-dialog" role="document">
+	                    <div class="modal-content">
+	                        <div class="modal-header">
+	                            <p class="modal-title">是否删除该菜单</p>
+	                        </div>
+							<form class="delete-menu-{$vo.id}" method="post" action="{:url('delete')}">
+								<input type="hidden" name="id" value="{$vo.id}" />
+	                        </form>
+	                        <div class="modal-footer">
+	                            <button type="submit" class="btn btn-green ajax-post" target-form="delete-menu-{$vo.id}">删除</button>
+	                            <button type="button" class="btn btn-green" data-dismiss="modal">取消</button>
+	                        </div>
+	                    </div>
+	                </div>
+	            </div>
+	            {/volist}
+	            {/notempty}
+	        </div>
+	    </div>
+	
+	</div>
+</body>
+{include file='public/script' /}
+<script type="text/javascript">
+    //导航高亮
+    highlight_subnav('{:url('index')}');
+</script>
+</html>

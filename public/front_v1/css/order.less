@@ -1,0 +1,386 @@
+section {
+  margin-top: 30px;
+}
+
+.header {
+  font-size: 18px;
+  padding-bottom: 10px;
+  border-bottom: 1px dashed #BFBFBF;
+}
+
+.title {
+  font-size: 16px;
+  color: #000;
+  padding-bottom: 14px;
+  border-bottom: 1px solid #C9C9C9;
+  margin-top: 40px;
+}
+
+.title > a {
+  cursor: pointer;
+}
+.title>.back-cart{
+  color:#515151;
+  i{
+    color:#6c6c6c;
+    font-size: 12px;
+    vertical-align: middle;
+    margin-left: 10px;
+  }
+}
+
+.title > a:hover {
+  text-decoration: none;
+}
+
+.title:first-child {
+  margin-top: 30px;
+}
+
+.title + div {
+  margin: 15px 34px 0;
+}
+
+div.consignee-cont {
+  margin-top: 19px;
+}
+
+.list-item {
+  height: 31px;
+  line-height: 31px;
+  margin-bottom: 10px;
+  display: none;
+}
+
+.consignee-item, .addr-detail {
+  float: left;
+}
+
+.op-btns {
+  float: right;
+}
+
+.consignee-item {
+  width: 181px;
+  height: 31px;
+  border: 1px solid #E5E5E5;
+  margin-right: 20px;
+  text-align: center;
+  cursor: pointer;
+}
+
+.list-item:first-child {
+  display: block;
+}
+
+.consignee-item:hover {
+  border-color: #00A496;
+}
+
+.item-selected {
+  border-color: #00A496;
+  position: relative;
+}
+
+.item-selected b.defaultaddr {
+  display: block;
+  width: 15px;
+  height: 15px;
+  background: url('../img/addr-check.png') no-repeat 0 0;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+}
+
+.addr-detail {
+  .addr-name, .addr-info {
+    margin-right: 18px;
+  }
+  .addr-default {
+    display: inline-block;
+    margin: 5px 10px;
+    background-color: #9D9D9D;
+    color: #fff;
+    padding: 0 4px;
+    line-height: 20px;
+  }
+}
+
+.op-btns {
+  visibility: hidden;
+  a {
+    color: #8D91AC;
+    margin: 0 15px;
+    cursor: pointer;
+  }
+  a:hover {
+    text-decoration: none;
+  }
+}
+
+.list-item:hover .op-btns {
+  visibility: visible;
+}
+
+.addr-switch {
+  cursor: pointer;
+  i{
+    color: #6c6c6c;
+    font-size: 12px;
+    margin-left: 4px;
+  }
+}
+
+#pay_list .form-group {
+  margin-right: 50px;
+}
+
+#pay_list .form-group input {
+  margin-right: 5px;
+}
+
+#pay_list .form-group > label {
+  font-weight: normal;
+}
+#pay_list .form-group > label:before{
+  top:1px;
+}
+
+div.pro-list {
+  margin-left: 0;
+  margin-top: 22px;
+}
+
+.pro-item > ul > li {
+  height: 88px;
+  line-height: 88px;
+  overflow: hidden;
+  word-break: keep-all;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.pro-item > ul > li:not(:first-child) {
+  margin: 0 50px;
+  text-align: center;
+}
+
+.pro-img img {
+  width: 110px;
+  height: 88px;
+}
+
+.pro-name {
+  width: 200px;
+}
+
+.pro-price, .pro-state, .pro-subtotal {
+  width: 100px;
+  text-align: center;
+}
+
+div.installation-time {
+  margin-left: 44px;
+}
+
+.installation-time select {
+  width: 110px;
+  height: 33px;
+  margin: 0 10px;
+  padding:0 15px;
+  display: inline-block;
+  padding:0\9;
+}
+
+.installation-time label {
+  font-weight: normal;
+  margin-left: 10px;
+}
+
+.installation-time input[type=checkbox] {
+  margin: 0 5px;
+}
+
+.invoice-choice a.btn {
+  margin-right: 10px;
+}
+
+.invoice-choice p {
+  margin: 20px 0 20px 10px;
+}
+
+.invoice-content {
+  overflow: hidden;
+  padding: 20px 30px 20px 40px;
+}
+
+.invoice-content > .pull-left {
+  line-height: 14px;
+}
+
+.invoice-content > .pull-left p:last-child {
+  margin-bottom: 0;
+}
+
+.invoice-content > a.pull-right {
+  margin-top: 14px;
+}
+
+.invoice-content > p {
+  margin-right: 96px;
+  margin-top: 14px;
+  height: 63px;
+  line-height: 63px;
+}
+
+.invoice-content > p > span {
+  font-size: 26px;
+}
+
+.nav-tabs {
+  border: none;
+}
+
+.nav-box {
+  overflow: hidden;
+}
+
+.nav-tabs:after, .nav-tabs:before {
+  display: none;
+}
+
+.nav-tabs > li {
+  margin: 0;
+  margin-right: 10px;
+  width: 131px;
+  height: 31px;
+  a {
+    border-radius: 0;
+    width: 130px;
+    height: 30px;
+    padding: 5px 15px;
+    border: 1px solid #00A496;
+    background: transparent;
+    color: #00A496;
+  }
+  a:hover {
+    background: transparent;
+    border-color: #04cdbc;
+    color: #04cdbc;
+  }
+}
+
+.nav-tabs > li.active a {
+  border: 1px solid #00A496;
+  margin-bottom: 1px;
+}
+
+.nav-tabs > li.active > a, .nav-tabs > li.active > a:focus, .nav-tabs > li.active > a:hover {
+  border-color: #00A496;
+}
+#copy p span{
+  display: none;
+}
+#copy p input {
+  width: 271px;
+  height: 31px;
+  padding-left: 5px;
+  margin-top: -5px;
+  margin-left: -5px;
+  margin-bottom: -6px;
+}
+
+/*****************modal*******************/
+.modal-dialog {
+  width: 630px;
+  top:150px;
+}
+.modal-content{
+  border-radius: 0;
+}
+.modal-header {
+  border-bottom: none;
+  height: 73px;
+  position: relative;
+  font-size: 20px;
+  color:#00A496;
+  .modal-title {
+    margin-top: 25px;
+    margin-left: 52px;
+  }
+}
+
+.modal-header:after {
+  display: table;
+  content: '';
+  width: 494px;
+  height: 1px;
+  border-bottom:1px dashed #00A496;
+  position: absolute;
+  bottom: 0;
+  left: 67px;
+  right: 67px;
+}
+
+.modal-body {
+  padding: 28px 67px 0 67px;
+  .form-group {
+    margin-bottom: 20px;
+    margin-left: 0;
+  }
+  label.control-label {
+    display: inline-block;
+    padding: 0;
+    font-weight: normal;
+    width: 84px;
+  }
+  div.input-box {
+    display: inline-block;
+    width: 406px;
+  }
+  select {
+    width: 111px;
+    height: 35px;
+    margin: 0 4px;
+  }
+  select:first-child{
+    margin-left: 0;
+  }
+  form>.form-group:last-child>.input-box>input:last-child{
+    margin-right: 0;
+  }
+  form>.form-group:last-child>.input-box>input{
+    width:100px;
+    display: inline-block;
+    margin:0 3px;
+  }
+  form>.form-group:last-child>.input-box>input:first-child{
+    margin-left: 0;
+  }
+  #phone,#ins_phone{
+    width:181px;
+  }
+}
+.modal-footer{
+  border-top:none;
+  text-align: center;
+  padding-top: 5px;
+  padding-bottom: 40px;
+  .btn{
+    width:100px;
+    height:34px;
+  }
+}
+select.form-control{
+  display: inline-block;
+}
+label.check-label::before{
+  vertical-align: sub;
+}
+.radio-inline{
+  padding-left: 0;
+}
+.radio-inline + .radio-inline{
+  margin-left: 40px;
+}
+

@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html>
+{include file='public/header' /}
+<style type="text/css">
+	.main .btn-box {
+        position: static;
+        margin-top: 30px;
+        padding-left: 125px;
+        margin-bottom: 40px;
+    }
+    
+    .table tr td:nth-child(3){
+       width:600px;
+    }
+
+	.main .form-group .form-control {
+        width: 600px;
+    }
+
+    .main .form-group textarea.form-control {
+    	width: 600px;
+        height: 120px;
+        resize: none;
+    }
+
+    .form-horizontal .form-group .control-label {
+        display: inline-block;
+	    width: 90px;
+	    font-weight: 100;
+    }
+    .done .modal-content {
+        height:500px;
+    }
+    .done .modal-footer {
+    	padding-top: 15px;
+    }
+    
+    .img-modal .modal-dialog {
+    	width: 160px;
+	    min-width: 160px;
+	    margin-top: 300px;
+	}
+    
+    .img-modal .modal-dialog .modal-content .modal-body img {
+    	min-width: 130px;
+    }
+    
+    .img-modal .modal-dialog .modal-content {
+    	width: 150px;
+    	height: 150px;
+	    border: 1px solid #fafafa;
+	    background-color: transparent;
+	    position: relative;
+	    border-radius: 0;
+	}
+</style>
+<body>
+	{include file='public/head' /}
+	{include file='public/left' /}
+	<div id="top-alert" class="fixed alert alert-error" style="display: none;">
+		<button class="close fixed" style="margin-top: 4px;">&times;</button>
+		<div class="alert-content"></div>
+	</div>
+	<div class="main">
+	    <div class="main-inner">
+	        <div class="contain">
+	            <p class="page-title">联系我们</p>
+	            <ol class="breadcrumb">
+	                <li><a href="{:url('index/index')}">首页</a></li>
+	                <li><a href="{:url('contact/index')}">联系我们</a></li>
+	                <li class="active"><a href="{:url('?id=3')}">微信公众号</a></li>
+	            </ol>
+	            <ul class="nav nav-tabs">
+	                <li role="presentation"><a href="{:url('')}">服务热线</a></li>
+	                <li role="presentation"><a href="{:url('?id=2')}">邮箱</a></li>
+	                <li role="presentation" class="active"><a href="javascript:void(0);">微信公众号</a></li>
+	                <li role="presentation"><a href="{:url('?id=4')}">地址</a></li>
+	            </ul>
+	            <form class="form-inline text-right search-form">
+	                <div class="form-group">
+	                    <button type="button" class="btn btn-green" data-toggle="modal" data-target="#add_wechat">添加</button>
+	                </div>
+	            </form>
+	            <div class="tab-content">
+	                <div class="tab-pane active" id="all">
+	
+	                    <div class="table-box">
+	                        <div class="pane-inner">
+	                        <table class="table">
+	                            <thead>
+	                            <tr>
+	                                <!--<td>ID</td>-->
+	                                <td>序号</td>
+	                                <td>名称</td>
+	                                <td>二维码</td>
+	                                <td>状态</td>
+	                                <td>排序</td>
+	                                <td>操作</td>
+	                            </tr>
+	                            </thead>
+	                            <tbody>
+	                            {notempty name="_list"}
+								{volist name="_list" id="vo"}
+								<tr>
+	                                <!--<td><input class="ids" type="hidden" name="id[]" value="{$vo.id}" />{$vo.id}</td>-->
+	                                <td><input class="ids" type="hidden" name="id[]" value="{$vo.id}" />{$i}</td>
+	                                <td>{$vo.key}</td>
+	                                <td><span>{$vo.value}</span> <a class="border show_img" href="javascript:void(0);" title="点击查看二维码">[点击查看]</a></td>
+	                                <td>{$vo.status_text}</td>
+	                                <td>{$vo.sort}</td>
+	                                <td>
+										<a class="modify border" data-toggle="modal" data-target="#modify_wechat_{$vo.id}">修改</a>
+										<a href="{:url('status',array('id'=>$vo['id'],'value'=>abs($vo['status']-1)))}" class="stop ajax-get border">{eq name="vo.status" value="0" }关闭{else/}显示{/eq}</a>
+										<a class="delete delete_line border">删除</a>
+									</td>
+	                            </tr>
+	                            {/volist}
+								{else/}
+								<td colspan="6" class="text-center"> aOh! 暂时还没有内容! </td>
+								{/notempty}
+								</tbody>
+	                        </table>
+	                            </div>
+	                        <nav class="text-right">
+	                        	{$_page}
+	                        </nav>
+	                    </div>
+	                </div>
+	            </div>
+	            {notempty name="_list"}
+	            {volist name="_list" id="vo"}
+	            <div class="modal fade done" id="modify_wechat_{$vo.id}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+	                <div class="modal-dialog" role="document">
+	                    <div class="modal-content">
+	                        <div class="modal-header">
+	                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+	                                    class="iconfont icon-guanbi"></span></button>
+	                            <p class="modal-title">修改微信公众号</p>
+	                        </div>
+	                        <div class="modal-body">
+	                            <form class="form-horizontal change-wechat-{$vo.id}" action="{:url('edit_wechat')}">
+									<input type="hidden" name="id" value="{$vo.id}">
+									<div class="form-group">
+	                                    <label class="control-label">名称：</label>
+	                                    <div class="input-box">
+	                                        <input type="text" class="form-control" name="title" maxlength="64" value="{$vo.key}" />
+	                                    </div>
+	                                </div>
+	                                <div class="form-group">
+	                                    <label class="control-label">二维码：</label>
+	                                    <div class="input-box">
+											<div class="upload-img-box" >
+											<div class="upload-pre-item" style="padding-bottom: 5px;"><img src="{$vo.value}" width="104" height="104"/></div>
+											</div>
+											<input type="hidden" name="thumb" value="{$vo.value}" />
+											<button type="button" class="btn btn-green btn-min uploadimg">上传二维码</button>
+										</div>
+	                                </div>
+	                                <div class="form-group">
+	                                    <label class="control-label">排序：</label>
+	                                    <div class="input-box">
+	                                        <input type="text" class="form-control" name="sort" value="{$vo.sort}" />
+	                                    </div>
+	                                </div>
+	                                <div class="form-group">
+	                                    <label class="control-label">状态：</label>
+	                                    <div class="input-box radio">
+	                                        <label for="yes_{$vo.id}" class="radio-inline"><input type="radio" name="status" value="0" id="yes_{$vo.id}" {eq name="vo.status" value="0"}checked{/eq}/>显示</label>
+	                                        <label for="no_{$vo.id}" class="radio-inline"><input type="radio" name="status" value="1" id="no_{$vo.id}" {eq name="vo.status" value="1"}checked{/eq} />关闭</label>
+	                                    </div>
+	                                </div>
+	                            </form>
+	                        </div>
+	                        <div class="modal-footer">
+	                            <button type="submit" class="btn btn-green ajax-post" target-form="change-wechat-{$vo.id}">提交</button>
+	                            <button type="button" class="btn btn-green" style="margin-left: 10px;" data-dismiss="modal">取消</button>
+	                        </div>
+	                    </div>
+	                </div>
+	            </div>
+				{/volist}
+				{/notempty}
+				<div class="modal fade done" id="add_wechat" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+	                <div class="modal-dialog" role="document">
+	                    <div class="modal-content">
+	                        <div class="modal-header">
+	                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+	                                    class="iconfont icon-guanbi"></span></button>
+	                            <p class="modal-title">添加微信公众号</p>
+	                        </div>
+	                        <div class="modal-body">
+	                            <form class="form-horizontal add-wechat" method="post" action="{:url('add_wechat')}">
+	                                <div class="form-group">
+	                                    <label class="control-label">名称：</label>
+	                                    <div class="input-box">
+	                                        <input type="text" class="form-control" name="title">
+	                                    </div>
+	                                </div>
+	                                <div class="form-group">
+	                                    <label class="control-label">二维码：</label>
+	                                    <div class="input-box">
+											<div class="upload-img-box" >
+											<div class="upload-pre-item" style="padding-bottom: 5px;"></div>
+											</div>
+											<input type="hidden" name="thumb" />
+											<button type="button" class="btn btn-green btn-min uploadimg">上传二维码</button>
+										</div>
+	                                </div>
+	                                <div class="form-group">
+	                                    <label class="control-label">排序：</label>
+	                                    <div class="input-box">
+	                                        <input type="text" class="form-control" name="sort" />
+	                                    </div>
+	                                </div>
+	                                <div class="form-group">
+	                                    <label class="control-label">状态：</label>
+	                                    <div class="input-box radio">
+	                                        <label for="yes" class="radio-inline"><input type="radio" name="status" value="0" id="yes" checked/>显示</label>
+	                                        <label for="no" class="radio-inline"><input type="radio" name="status" value="1" id="no" />关闭</label>
+	                                    </div>
+	                                </div>
+	                            </form>
+	                        </div>
+	                        <div class="modal-footer">
+	                            <button type="submit" class="btn btn-green ajax-post" target-form="add-wechat">提交</button>
+	                            <button type="button" class="btn btn-green" style="margin-left: 10px;" data-dismiss="modal">取消</button>
+	                        </div>
+	                    </div>
+	                </div>
+	            </div>
+				<div class="modal fade delete" id="delete_wechat" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+	                <div class="modal-dialog" role="document">
+	                    <div class="modal-content">
+	                        <div class="modal-header">
+	                            <p class="modal-title">是否删除该微信公众号</p>
+	                        </div>
+							<form method="post" class="delete-wechat" action="{:url('del_wechat')}"><input type="hidden" name="id" /></form>
+	                        <div class="modal-footer">
+	                            <button type="submit" class="btn btn-green ajax-post" target-form="delete-wechat">删除</button>
+	                            <button type="button" class="btn btn-green" data-dismiss="modal">取消</button>
+	                        </div>
+	                    </div>
+	                </div>
+	            </div>
+	            <div class="modal fade img-modal" id="img_modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+	                <div class="modal-dialog" role="document">
+	                    <div class="modal-content">
+	                        <div class="modal-header">
+	                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+	                                    class="iconfont icon-guanbi"></span></button>
+	                        </div>
+	                        <div class="modal-body">
+	                            <img src="__PUBLIC__/front_v1/img/suo-lg.png" alt="" width="130" height="130" />
+	                        </div>
+	                    </div>
+	                </div>
+	            </div>
+	        </div>
+	    </div>
+	
+	</div>
+</body>
+{include file='public/script' /}
+<script type="text/javascript" src="__PUBLIC__/front_v1/js/plupload-2.1.8/plupload.full.min.js"></script>
+<script type="text/javascript" src="__PUBLIC__/front_v1/js/plupload-2.1.8/i18n/zh_CN.js"></script>
+<script type="text/javascript" src="__PUBLIC__/front_v1/js/jquery.uploader.js"></script>
+<script type="text/javascript">
+    //导航高亮
+    highlight_subnav('{:url('index')}');
+    
+    $('.uploadimg').each(function(){
+		var obj = $(this);
+		var _param = {};
+		_param.url = "{:url('file/upload_picture')}";
+		_param.file_data_name = 'image';
+		obj.uploader(
+			_param,
+			function(ok){
+				if (ok && ok.code == 1) {
+					var src = ok.data.filepath;
+					console.log(src);
+					//$("#cover_id_thumb").val(ok.data.filepath);
+					obj.parent().find("input[name='thumb']").val(ok.data.filepath);
+					obj.parent().find('.upload-pre-item').html('<img src="'+src+'" width="104" height="104"/>');
+				} else 
+					alert(ok.info);
+			},
+			function(err){alert(err);}
+		);
+	});
+    
+    $('.delete_line').click(function(){
+		var _  = $(this),
+			_id = _.parents('tr').find(':input[name="id[]"]').val();
+		$('#delete_wechat').find(':input[name="id"]').val(_id);
+		$('#delete_wechat').modal('show');
+	});
+	
+	$(".show_img").click(function () {
+		var _src= $(this).parent().find("span").html();
+		$('#img_modal').find('img').attr({'src':_src});
+        $("#img_modal").modal("show");
+    })
+</script>
+</html>

@@ -1,0 +1,80 @@
+{include file='public/header' /}
+<body>
+	<div id="container">
+    	{include file='public/head' /}
+        <div id="main">
+        	{notempty name="_banner.thumb"}
+        	{eq name="_banner.status" value="0"}
+        	<div>
+        		{notempty name="_banner.url"}
+        		<a href="{$_banner.url}" {eq name="_banner.tab" value="0"}target="_blank"{/eq}><img src="{$_banner.thumb}"/></a>
+        		{else/}
+        		<img src="{$_banner.thumb}"/>
+        		{/notempty}
+        	</div>
+        	{/eq}
+        	{/notempty}
+            <div>
+            	<div class="mianbaoxie"><a href="{:url('index/index')}">首页 &gt; </a><strong>联系我们</strong></div>
+                <div class="clear"></div>
+                <div class="articleinfos">
+                    <div class="contact-content">
+                    	{notempty name="_telephones"}
+	                    <p>
+	                        <img src="__IMG__/contact/serve-hotline.png" align="absmiddle"/>
+	                        <span class="serve-hotline">服务热线</span>
+	                    </p>
+	                    <p class="contact-phone">
+	                    	{volist name="_telephones" id="vo"}
+	                        <span>{$vo.value}（{$vo.key}）</span>
+	                        {/volist}
+	                    </p>
+	                    {/notempty}
+	                    {notempty name="_emails"}
+	                    <p>
+	                        <img src="__IMG__/contact/email.png" align="absmiddle"/>
+	                        <span class="serve-hotline">邮箱</span>
+	                    </p>
+	                    <p class="contact-phone">
+	                    	{volist name="_emails" id="vo"}
+	                        <span>{$vo.value}（{$vo.key}）</span>
+	                        {/volist}
+	                    </p>
+	                    {/notempty}
+	                    {notempty name="_wechats"}
+	                    <p>
+	                        <img src="__IMG__/contact/wechat.png" align="absmiddle"/>
+	                        <span class="serve-hotline">微信公众号</span>
+	                    </p>
+	                    <div class="contact-code">
+	                    	{volist name="_wechats" id="vo"}
+	                    	<div {eq name='i' value='1'}class="left"{else/}style="position: absolute;top: 0;margin-left: {$i*200-200}px;"{/eq}>
+	                        	<img src="{$vo.value}"/>
+	                        	<p class="code-title" {neq name='i' value='1'}style="margin-left: 0px;text-align: center;"{/neq}>{$vo.key}</p>
+	                        </div>
+	                    	{/volist}
+	                    </div>
+	                    {/notempty}
+	                    {notempty name="_address"}
+	                    <p>
+	                        <img src="__IMG__/contact/location.png" align="absmiddle"/>
+	                        <span class="serve-hotline">地址</span>
+	                    </p>
+	                    <div class="sddress-detail">
+	                        {notempty name="_address.key"}<p>{$_address.key}</p>{/notempty}
+	                        {notempty name="_address.value"}<img src="{$_address.value}"/>{/notempty}
+	                    </div>
+	                    {/notempty}
+                    </div>
+                </div>
+            </div>
+        </div>
+        {include file='public/footer' /}
+    </div>
+</body>
+<script type="text/javascript" src="__JS__/website.js"></script>
+<script type="text/javascript">
+	//导航高亮
+	highlight_subnav('{:url('contact/index')}');
+</script>
+</html>

@@ -1,0 +1,128 @@
+<head>
+    <meta charset="UTF-8">
+    <title>{$meta_title}|{$cfgs.BACKSTAGE_TITLE}</title>
+    <link href="" type="image/x-icon" rel="shortcut icon">
+     <!--[if lt IE 9]>
+    <script type="text/javascript" src="__STATIC__/jquery-1.10.2.min.js"></script>
+    <![endif]--><!--[if gte IE 9]><!-->
+    <script type="text/javascript" src="__STATIC__/jquery-2.0.3.min.js"></script>
+    <script type="text/javascript" src="__JS__/jquery.mousewheel.js"></script>
+    <!--<![endif]-->
+    <link href="__PUBLIC__/front_v1/css/bootstrap.min.css" rel="stylesheet">
+    <!-- common css -->
+    <link rel="stylesheet" href="__PUBLIC__/front_v1/css/common.css"/>
+    <link rel="stylesheet" href="__PUBLIC__/font_v2/css/iconfont.css"/>
+    <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
+    <!--[if lt IE 9]>
+    	
+    	
+    <script src="__PUBLIC__/front_v1/js/ie8-responsive-file-warning.js"></script><![endif]-->
+    <script src="__PUBLIC__/front_v1/js/ie-emulation-modes-warning.js"></script>
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+    <script src="__PUBLIC__/front_v1/js/html5shiv.min.js"></script>
+    <script src="__PUBLIC__/front_v1/js/respond.min.js"></script>
+    <![endif]-->
+	<script src="__PUBLIC__/front_v1/js/jquery-2.2.3.min.js"></script>
+	<script src="__PUBLIC__/front_v1/js/bootstrap.min.js"></script>
+	<!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+	<script src="__PUBLIC__/front_v1/js/ie10-viewport-bug-workaround.js"></script>
+	
+    <!-- Custom styles for this template -->
+    <link rel="stylesheet" href="__PUBLIC__/front_v1/css/backstage.css">
+    <style>
+        #add .form-horizontal{
+            padding-left: 50px;
+        }
+        .main .form-group .form-control{
+            width:222px;
+        }
+        .main .form-group textarea.form-control{
+            height:175px;
+            resize: none;
+        }
+        .form-group  label.radio-inline:before{
+            top:1px;
+        }
+        .form-group  label.radio-inline{
+            margin-top: 2px;
+        }
+        .main .btn-box{
+            margin-top: 370px;
+            padding-left: 125px;
+        }
+		/* 提醒框 */
+		.alert {
+			color: #c09853;
+			font-weight: bold;
+			border: 1px solid #fbeed5;
+			background-color: #fcf8e3;
+		}
+		.alert .close {
+		    float: right;
+		    position: relative;
+		    top: -2px;
+		    right: -21px;
+		    font: bold 20px/20px arial; 
+			color: #c09853;
+		    opacity: 0.4;
+		}
+		.alert .close:hover {
+			opacity: 0.6;
+		}
+		button.close {
+		    padding: 0;
+		    cursor: pointer;
+		    border: 0 none;
+			background: none;
+		}
+		.close {
+		    float: right;
+		    font-size: 20px;
+		    font-weight: bold;
+		    line-height: 20px;
+		    color: #000000;
+		    text-shadow: 0 1px 0 #ffffff;
+		    opacity: 0.2;
+		    filter: alpha(opacity=20);
+		}
+		.alert-info {
+			background-color: #D9EDF7;
+		    border-color: #BCE8F1;
+		    color: #3A87AD;
+		}
+		.alert-error {
+			color: white;
+			border-color: #eed3d7;
+			background-color: #FF6666;
+		}
+		.alert-success {
+		    color: #468847;
+		    background-color: #CCFF99;
+		    border-color: #eed3d7;
+		}
+		#top-alert {
+		    display: block;
+		    top: 0px;
+		    left: 25%;
+		    right: 25%;
+		    z-index: 3000;
+			padding-top: 12px;
+			padding-bottom: 12px;
+		    overflow: hidden;
+		    font-size: 16px;
+			position:fixed;
+		}
+		#top-alert .close{
+		    right:2px;
+		    top:0px;
+		}
+		.alert-content{
+			margin-left: 14px;
+		    max-width:600px;
+		    word-wrap: break-word;
+		    word-break: break-word;
+		}
+	</style>
+</head>

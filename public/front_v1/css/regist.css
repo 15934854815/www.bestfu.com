@@ -1,0 +1,113 @@
+section.container {
+  width: 1238px;
+  padding: 40px 66px;
+}
+.title > p,
+.title > h3 {
+  margin: 0;
+}
+.title {
+  position: relative;
+  border-bottom: 1px solid #eee;
+  padding-bottom: 14px;
+}
+.title p {
+  position: absolute;
+  top: 6px;
+}
+.title h3 {
+  text-align: center;
+}
+.content {
+  margin-top: 14px;
+}
+.form-group.font-16 > span {
+  vertical-align: middle;
+}
+#user .form-horizontal {
+  margin-top: 30px;
+  padding-left: 323px;
+}
+.form-horizontal .form-group {
+  margin: 0 0 20px 0;
+}
+.form-horizontal label {
+  display: inline-block;
+  width: 70px;
+  font-weight: 100;
+}
+.form-horizontal .input-box {
+  display: inline-block;
+  width: 320px;
+  padding: 1px;
+}
+.form-horizontal .input-box:nth-child(2) {
+  vertical-align: bottom;
+}
+#regist_btn {
+  margin-left: 400px;
+}
+#user .col-sm-4 {
+  margin-left: -16px;
+}
+#operator p {
+  font-size: 20px;
+  margin-bottom: 40px;
+}
+#operator .form-horizontal .input-box {
+  width: 334px;
+}
+#operator .text {
+  position: relative;
+  left: -30px;
+}
+#operator .text label {
+  width: 100px;
+  vertical-align: top;
+}
+#operator .text textarea {
+  width: 334px;
+  height: 260px;
+  resize: none;
+}
+#operator .text:last-child textarea {
+  width: 1028px;
+  height: 100px;
+}
+#operator .upload .form-horizontal {
+  width: 250px;
+  text-align: right;
+}
+#operator .upload .form-horizontal label {
+  width: 130px;
+}
+#operator .upload .form-horizontal .input-box {
+  width: 110px;
+}
+#verify {
+  width: 182px;
+  display: inline-block;
+}
+#verify ~ button {
+  position: relative;
+  top: -2px;
+  left: 3px;
+}
+.icon-gantan {
+  font-size: 14px;
+  color: #00a1e3;
+  margin-right: 5px;
+}
+.border-b {
+  border-bottom: 1px solid #E5E5E5;
+  padding-bottom: 7px;
+}
+#operator .keyperson {
+  width: 380px;
+}
+#operator .keyperson label {
+  width: 45px;
+}
+#operator .keyperson .input-box {
+  width: 330px;
+}

@@ -1,0 +1,53 @@
+{include file='public/header' /}
+<link href="__CSS__/page.css" rel="stylesheet" type="text/css">
+<body>
+	<div id="container">
+    	{include file='public/head' /}
+        <div id="main">
+        	{notempty name="_banner.thumb"}
+        	{eq name="_banner.status" value="0"}
+        	<div>
+        		{notempty name="_banner.url"}
+        		<a href="{$_banner.url}" {eq name="_banner.tab" value="0"}target="_blank"{/eq}><img src="{$_banner.thumb}"/></a>
+        		{else/}
+        		<img src="{$_banner.thumb}"/>
+        		{/notempty}
+        	</div>
+        	{/eq}
+        	{/notempty}
+            <div>
+            	<div class="mianbaoxie"><a href="{:url('index/index')}">首页 &gt; </a><strong>新闻</strong> </div>
+            	{notempty name="_list"}
+            	<ul class="listnews">
+            		{volist name="_list" id="vo"}
+                    <li class="singleli">
+                        <div class="newsleft">
+                            <a href="{:url('news/show', ['id'=>$vo.id])}"><img src="{$vo.thumb}"/></a>
+                        </div>
+                        <div class="newsright">
+                            <div class="listtitle"><a href="{:url('news/show', ['id'=>$vo.id])}">{$vo.title}</a></div>
+                            <div class="listtime">发布日期：{$vo.addtime|date='Y-m-d', ###}</div>
+                            <div class="news-content">
+                            	{$vo.intro}
+                            </div>
+                            <div class="seeall"><a href="{:url('news/show', ['id'=>$vo.id])}">查阅详情&gt;&gt;</a></div>
+                        </div>
+                    </li>
+                    {/volist}
+                </ul>
+                {/notempty}
+            </div>
+            <div class="clear"></div>
+            <div class="pages news-pages">
+            	{notempty name="_page"}{$_page}{/notempty}
+            </div>
+        </div>
+        {include file='public/footer' /}
+    </div>
+</body>
+<script type="text/javascript" src="__JS__/website.js"></script>
+<script type="text/javascript">
+	//导航高亮
+	highlight_subnav('{:url('news/index')}');
+</script>
+</html>

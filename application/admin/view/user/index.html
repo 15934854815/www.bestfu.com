@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html>
+{include file='public/header' /}
+<style type="text/css">
+	.main .btn-box {
+        position: static;
+        margin-top: 30px;
+        padding-left: 125px;
+        margin-bottom: 40px;
+    }
+
+	.main .form-group .form-control {
+        width: 600px;
+    }
+
+    .main .form-group textarea.form-control {
+    	width: 600px;
+        height: 120px;
+        resize: none;
+    }
+
+    .form-horizontal .form-group .control-label {
+        display: inline-block;
+	    width: 90px;
+	    font-weight: 100;
+    }
+    .done .modal-content {
+        height:370px;
+    }
+    .done .modal-footer {
+    	padding-top: 15px;
+    }
+</style>
+<body>
+	{include file='public/head' /}
+	{include file='public/left' /}
+	<div id="top-alert" class="fixed alert alert-error" style="display: none;">
+		<button class="close fixed" style="margin-top: 4px;">&times;</button>
+		<div class="alert-content"></div>
+	</div>
+	<div class="main">
+	    <div class="main-inner">
+	        <div class="contain">
+	            <p class="page-title">用户管理</p>
+	            <ol class="breadcrumb">
+	                <li><a href="{:url('index/index')}">首页</a></li>
+	                <li><a href="{:url('user/index')}">用户管理</a></li>
+	                <li class="active"><a href="{:url('user/index')}">用户列表</a></li>
+	            </ol>
+	            <ul class="nav nav-tabs">
+	                <li role="presentation" class="active"><a href="javascript:void(0);">用户列表</a></li>
+	                <li role="presentation"><a href="{:url('add')}">添加用户</a></li>
+	            </ul>
+	            <div class="tab-content">
+	                <div class="tab-pane active" id="all">
+	
+	                    <div class="table-box">
+	                        <div class="pane-inner">
+	                        <table class="table">
+	                            <thead>
+	                            <tr>
+	                                <!--<td>ID</td>-->
+	                                <td>序号</td>
+	                                <td>用户名</td>
+	                                <td>用户状态</td>
+	                                <td>所属角色</td>
+	                                <td>上次登录时间</td>
+	                                <td>上次登录地址</td>
+	                                <td>添加时间</td>
+	                                <td>操作</td>
+	                            </tr>
+	                            </thead>
+	                            <tbody>
+	                            {notempty name="_list"}
+								{volist name="_list" id="vo"}
+								<tr>
+	                                <!--<td><input class="ids" type="hidden" name="id[]" value="{$vo.uid}" />{$vo.uid}</td>-->
+	                                <td><input class="ids" type="hidden" name="id[]" value="{$vo.uid}" />{$i}</td>
+	                                <td>{$vo.username}</td>
+	                                <td>{$vo.status_text}</td>
+	                                <td>{$vo.rid_text}</td>
+	                                <td>{$vo.lasttime|date='Y-m-d H:i:s', ###}</td>
+	                                <td>{$vo.lastip}</td>
+	                                <td>{$vo.addtime|date='Y-m-d H:i:s', ###}</td>
+	                                <td>
+	                                	{if condition="is_administrator()"}
+										<a class="modify border" data-toggle="modal" data-target="#modify_user_{$vo.uid}">修改</a>
+										<a href="{:url('status',array('id'=>$vo['uid'],'value'=>abs($vo['status']-1)))}" class="stop ajax-get border">{eq name="vo.status" value="0" }禁用{else/}启用{/eq}</a>
+										<a class="delete delete_line border">删除</a>
+										{else/}
+										<a class="modify border" data-toggle="modal" data-target="#modify_user_{$vo.uid}">修改</a>
+										{if condition="$vo.uid neq $Think.config.user_root"}
+										<a href="{:url('status',array('id'=>$vo['uid'],'value'=>abs($vo['status']-1)))}" class="stop ajax-get border">{eq name="vo.status" value="0" }禁用{else/}启用{/eq}</a>
+										<a class="delete delete_line border">删除</a>
+										{/if}
+										{/if}
+									</td>
+	                            </tr>
+	                            {/volist}
+								{else/}
+								<td colspan="8" class="text-center"> aOh! 暂时还没有用户! </td>
+								{/notempty}
+								</tbody>
+	                        </table>
+	                            </div>
+	                        <nav class="text-right">
+	                        	{$_page}
+	                        </nav>
+	                    </div>
+	                </div>
+	            </div>
+	            {notempty name="_list"}
+	            {volist name="_list" id="vo"}
+	            <div class="modal fade done" id="modify_user_{$vo.uid}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+	                <div class="modal-dialog" role="document">
+	                    <div class="modal-content">
+	                        <div class="modal-header">
+	                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+	                                    class="iconfont icon-guanbi"></span></button>
+	                            <p class="modal-title">修改用户</p>
+	                        </div>
+	                        <div class="modal-body">
+	                            <form class="form-horizontal change-user-{$vo.uid}" action="{:url('edit')}">
+									<input type="hidden" name="uid" value="{$vo.uid}">
+	                                <div class="form-group">
+	                                    <label for="user_name1" class="control-label">用户名：</label>
+	                                    <div class="input-box">
+	                                        <input type="text" class="form-control" placeholder="4-32位数字字母组合" name="username" value="{$vo.username}">
+	                                    </div>
+	                                </div>
+	                                <div class="form-group">
+	                                    <label for="user_pwd1" class="control-label">密码：</label>
+	                                    <div class="input-box">
+	                                        <input type="password" class="form-control" name="password" />
+	                                    </div>
+	                                </div>
+	                                <div class="form-group">
+	                                    <label for="role1" class="control-label">角色：</label>
+	                                    <div class="input-box">
+											<select name="role_id" class="form-control">
+												{notempty name="_roles"}
+			                                	{volist name="_roles" id="v"}
+			                                    <option value="{$v.id}" {eq name="v.id" value="$vo['rid']"}selected{/eq}>{$v.name}</option>
+			                                    {/volist}
+			                                    {/notempty}
+	                                        </select>
+	                                    </div>
+	                                </div>
+	                                <div class="form-group">
+	                                    <label class="control-label">用户状态：</label>
+	                                    <div class="input-box radio">
+	                                        <label for="yes_{$vo.uid}" class="radio-inline"><input type="radio" name="status" value="0" id="yes_{$vo.uid}" {eq name="vo.status" value="0"}checked{/eq} />正常</label>
+	                                        <label for="no_{$vo.uid}" class="radio-inline"><input type="radio" name="status" value="1" id="no_{$vo.uid}" {eq name="vo.status" value="1"}checked{/eq} />禁用</label>
+	                                    </div>
+	                                </div>
+	                            </form>
+	                        </div>
+	                        <div class="modal-footer">
+	                            <button type="submit" class="btn btn-green ajax-post" target-form="change-user-{$vo.uid}">提交</button>
+	                        </div>
+	                    </div>
+	                </div>
+	            </div>
+				{/volist}
+				{/notempty}
+				<div class="modal fade delete" id="delete_role" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+	                <div class="modal-dialog" role="document">
+	                    <div class="modal-content">
+	                        <div class="modal-header">
+	                            <p class="modal-title">是否删除该用户</p>
+	                        </div>
+							<form method="post" class="delete-admin" action="{:url('user/delete')}"><input type="hidden" name="uid" /></form>
+	                        <div class="modal-footer">
+	                            <button type="submit" class="btn btn-green ajax-post" target-form="delete-admin">删除</button>
+	                            <button type="button" class="btn btn-green" data-dismiss="modal">取消</button>
+	                        </div>
+	                    </div>
+	                </div>
+	            </div>
+	        </div>
+	    </div>
+	
+	</div>
+</body>
+{include file='public/script' /}
+<script type="text/javascript">
+    //导航高亮
+    highlight_subnav('{:url('index')}');
+    
+    $('.delete_line').click(function(){
+		var _  = $(this),
+			user_id = _.parents('tr').find(':input[name="id[]"]').val();
+		$('#delete_role').find(':input[name="uid"]').val(user_id);
+		$('#delete_role').modal('show');
+	});
+</script>
+</html>

@@ -1,0 +1,20 @@
+<div id="header">
+<div class="clear"></div>
+<div id="menu">
+	<div id="logo">
+		<a href="{:url('index/index')}"><img src="__IMG__/home/logo.png" title="贝多福"/></a>
+	</div>
+	{notempty name="_header"}
+	<div id="headmenu">
+		<div class="divmenu">
+			<ul>
+				{volist name="_header" id="vo"}
+				<li><a href="{:url($vo.url)}">{$vo.title}</a></li>
+				{/volist}
+			</ul>
+		</div>
+	</div>
+	{/notempty}
+</div>
+</div>
+<div class="clear"></div>

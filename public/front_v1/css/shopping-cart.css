@@ -1,0 +1,78 @@
+h2{
+    margin-top: 60px;
+    margin-bottom: 30px;
+    text-align: center;
+    position: relative;
+    color: #515151;
+}
+h2::before,h2::after{
+    display: table;
+    content: '';
+    width:421px;
+    height:1px;
+    background: #E5E5E5;
+    position: absolute;
+    top:16px;
+}
+h2::after{
+    right: 0;
+}
+.reco-box{
+    background: #F2F2F2;
+    text-align: center;
+    height:100%;
+}
+.reco-img{
+    width:222px;
+    height:210px;
+}
+.carousel-inner .light-border{
+    width:232px;
+    height:400px;
+    padding:4px;
+}
+.carousel-inner .list-inline{
+    margin-left: -7px;
+    margin-right: -8px;
+}
+.carousel-inner .list-inline>li{
+    padding-left: 7px;
+    padding-right: 8px;
+}
+.carousel-indicators{
+    bottom:0;
+}
+.carousel-indicators>li{
+    width: 9px;
+    height:9px;
+    background: #B0B0B0;
+    border:none;
+    margin:1px 7px;
+    border-radius: 50%;
+}
+.carousel-indicators>li.active{
+    width:9px;
+    height:9px;
+    background: transparent;
+    border:1px solid #00A496;
+    margin:1px 7px;
+}
+#carousel-example-generic{
+    height:470px;
+}
+.reco-name{
+    margin-top: 35px;
+    margin-bottom:20px;
+    font-size: 16px;
+}
+.reco-price{
+    color: #C40000;
+}
+.reco-price>i{
+    font-style: normal;
+    font-size: 18px;
+}
+.reco-price>strong{
+    font-weight: normal;
+    font-size: 24px;
+}

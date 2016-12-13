@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+{include file='public/header' /}
+<style type="text/css">
+	.main .btn-box {
+        position: static;
+        margin-top: 30px;
+        padding-left: 125px;
+        margin-bottom: 40px;
+    }
+
+	.main .form-group .form-control {
+        width: 500px;
+    }
+
+    .main .form-group select.form-control {
+    	width: 70%;
+    }
+
+    .form-horizontal .form-group .control-label {
+        display: inline-block;
+	    width: 90px;
+	    font-weight: 100;
+    }
+    
+    .form-group  label.radio-inline:before{
+        top:1px;
+    }
+    .form-group  label.radio-inline{
+        margin-top: 2px;
+    }
+</style>
+<body>
+	{include file='public/head' /}
+	{include file='public/left' /}
+	<div id="top-alert" class="fixed alert alert-error" style="display: none;">
+		<button class="close fixed" style="margin-top: 4px;">&times;</button>
+		<div class="alert-content"></div>
+	</div>
+	<div class="main">
+	    <div class="main-inner">
+	        <div class="contain">
+	            <p class="page-title">联系我们</p>
+	            <ol class="breadcrumb">
+	                <li><a href="{:url('index/index')}">首页</a></li>
+	                <li><a href="{:url('contact/index')}">联系我们</a></li>
+	                <li class="active"><a href="{:url('?id=4')}">地址</a></li>
+	            </ol>
+	            <ul class="nav nav-tabs">
+	                <li role="presentation"><a href="{:url('')}">服务热线</a></li>
+	                <li role="presentation"><a href="{:url('?id=2')}">邮箱</a></li>
+	                <li role="presentation"><a href="{:url('?id=3')}">微信公众号</a></li>
+	                <li role="presentation" class="active"><a href="javascript:void(0);">地址</a></li>
+	            </ul>
+	            <div class="tab-content">
+	                <div class="tab-pane active" id="add">
+	                    <div class="pane-inner">
+	                    <form class="form-horizontal" action="{:url('save_address')}">
+	                        <div class="form-group">
+	                            <label for="user_name" class="control-label">详细地址：</label>
+	                            <div class="input-box">
+	                                <input type="text" class="form-control" name="address" {notempty name="_info.key"}value="{$_info.key}"{/notempty} />
+	                            </div>
+	                        </div>
+	                        <div class="form-group">
+	                            <label for="user_name" class="control-label">地址图片：</label>
+	                            <div class="input-box" {notempty name="_info.value"}style="padding-top: 10px;"{/notempty}>
+									<div class="upload-img-box">
+									<div class="upload-pre-item" style="padding-bottom: 5px;">{notempty name="_info.value"}<img src="{$_info.value}" width="600" height="171"/>{/notempty}</div>
+									</div>
+									<input type="hidden" name="addr_img" id="cover_id_thumb" {notempty name="_info.value"}value="{$_info.value}"{/notempty} />
+									<button type="button" class="btn btn-green btn-min uploadimg">上传图片</button>
+								</div>
+	                        </div>
+	                    </form>
+	                    </div>
+	                    <div class="btn-box">
+	                        <button type="submit" class="btn btn-green ajax-post" id="submit" target-form="form-horizontal">保存</button>
+	                        <button class="btn btn-green" onclick="javascript:history.back(-1);return false;">返回</button>
+	                    </div>
+	                </div>
+	            </div>
+	        </div>
+	    </div>
+	</div>
+</body>
+{include file='public/script' /}
+<script type="text/javascript" src="__PUBLIC__/front_v1/js/plupload-2.1.8/plupload.full.min.js"></script>
+<script type="text/javascript" src="__PUBLIC__/front_v1/js/plupload-2.1.8/i18n/zh_CN.js"></script>
+<script type="text/javascript" src="__PUBLIC__/front_v1/js/jquery.uploader.js"></script>
+<script type="text/javascript">
+	//导航高亮
+	highlight_subnav("{:url('index')}");
+	
+	$('.uploadimg').each(function(){
+		var obj = $(this);
+		var _param = {};
+		_param.url = "{:url('file/upload_picture')}";
+		_param.file_data_name = 'image';
+		obj.uploader(
+			_param,
+			function(ok){
+				if (ok && ok.code == 1) {
+					var src = ok.data.filepath;
+					console.log(src);
+					$("#cover_id_thumb").val(ok.data.filepath);
+					obj.parent()[0].style.paddingTop="10px";
+					obj.parent().find('.upload-pre-item').html('<img src="'+src+'" width="600" height="171"/>');
+				} else 
+					alert(ok.info);
+			},
+			function(err){alert(err);}
+		);
+	});
+</script>
+</html>

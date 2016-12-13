@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+{include file='public/header' /}
+<style type="text/css">
+	.main .btn-box {
+        position: static;
+        margin-top: 30px;
+        padding-left: 125px;
+        margin-bottom: 40px;
+    }
+
+	.main .form-group .form-control {
+        width: 500px;
+    }
+
+    .main .form-group select.form-control {
+    	width: 70%;
+    }
+
+    .form-horizontal .form-group .control-label {
+        display: inline-block;
+	    width: 90px;
+	    font-weight: 100;
+    }
+    
+    .form-group  label.radio-inline:before{
+        top:1px;
+    }
+    .form-group  label.radio-inline{
+        margin-top: 2px;
+    }
+</style>
+<body>
+	{include file='public/head' /}
+	{include file='public/left' /}
+	<div id="top-alert" class="fixed alert alert-error" style="display: none;">
+		<button class="close fixed" style="margin-top: 4px;">&times;</button>
+		<div class="alert-content"></div>
+	</div>
+	<div class="main">
+	    <div class="main-inner">
+	        <div class="contain">
+	            <p class="page-title">菜单管理</p>
+	            <ol class="breadcrumb">
+	                <li><a href="{:url('index/index')}">首页</a></li>
+	                <li><a href="{:url('node/index')}">后台菜单管理</a></li>
+	                <li class="active"><a href="{:url('node/edit', ['id'=>input('id',0)])}">修改后台菜单</a></li>
+	            </ol>
+	            <ul class="nav nav-tabs">
+	                <li role="presentation"><a href="{:url('node/index')}">菜单列表</a></li>
+	                <li role="presentation" class="active"><a href="javascript:void(0);">修改后台菜单</a></li>
+	            </ul>
+	            <div class="tab-content">
+	                <div class="tab-pane active" id="add">
+	                    <div class="pane-inner">
+	                    <form class="form-horizontal" action="{:url('')}">
+	                        <div class="form-group">
+	                            <label for="user_name" class="control-label">标题：</label>
+	                            <div class="input-box">
+	                                <input type="text" class="form-control" placeholder="用于后台显示的配置标题" name="title" value="{$_info.title}" />
+	                            </div>
+	                        </div>
+	                        <div class="form-group">
+	                            <label for="user_name" class="control-label">排序：</label>
+	                            <div class="input-box">
+	                                <input type="text" class="form-control" placeholder="用于后台显示的顺序" name="sort" value="{$_info.sort}" />
+	                            </div>
+	                        </div>
+	                        <div class="form-group">
+	                            <label for="user_name" class="control-label">链接：</label>
+	                            <div class="input-box">
+	                                <input type="text" class="form-control" placeholder="U函数解析的URL或者外链" name="url" value="{$_info.name}" />
+	                            </div>
+	                        </div>
+	                        <div class="form-group">
+	                            <label for="user_name" class="control-label">上级菜单：</label>
+	                            <div class="input-box">
+	                                <select name="pid" class="form-control">
+	                                	{notempty name="_menus"}
+	                                    {volist name="_menus" id="vo"}
+	                                    <option value="{$vo.id}">{$vo.title_show}</option>
+	                                    {/volist}
+	                                    {else/}
+	                                    <option value="0">顶级菜单</option>
+	                                    {/notempty}
+	                                </select>
+	                            </div>
+	                        </div>
+	                        <div class="form-group">
+	                            <label for="user_name" class="control-label">类型：</label>
+	                            <div class="input-box">
+	                                <select name="level" class="form-control">
+	                                    <option value="1">模块</option>
+	                                    <option value="2">列表</option>
+	                                    <option value="3">操作</option>
+	                                </select>
+	                            </div>
+	                        </div>
+	                        <div class="form-group">
+	                            <label for="user_name" class="control-label">状态：</label>
+	                            <div class="input-box">
+	                                <label for="yes" class="radio-inline"><input type="radio" name="status" value="0" id="yes"/>启用</label>
+                                	<label for="no" class="radio-inline"><input type="radio" name="status" value="1"  id="no"/>禁用</label>
+	                            </div>
+	                        </div>
+	                        <div class="form-group">
+	                            <label for="user_name" class="control-label">说明：</label>
+	                            <div class="input-box">
+	                                <input type="text" class="form-control" placeholder="菜单详细说明" name="remark" value="{$_info.remark}" />
+	                            </div>
+	                        </div>
+	                        <input type="hidden" name="id" value="{$_info.id|default=0}">
+	                    </form>
+	                    </div>
+	                    <div class="btn-box">
+	                        <button type="submit" class="btn btn-green ajax-post" id="submit" target-form="form-horizontal">保存</button>
+	                        <button class="btn btn-green" onclick="javascript:history.back(-1);return false;">返回</button>
+	                    </div>
+	                </div>
+	            </div>
+	        </div>
+	    </div>
+	</div>
+</body>
+{include file='public/script' /}
+<script type="text/javascript">
+	tp5_setvalue("pid", "{$_info.pid|default=0}");
+	tp5_setvalue("level", "{$_info.level|default=1}");
+	tp5_setvalue("status", "{$_info.status|default=0}");
+	//导航高亮
+	highlight_subnav("{:url('node/index')}");
+</script>
+</html>

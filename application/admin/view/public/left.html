@@ -1,0 +1,30 @@
+<div class="sidebar">
+    <ul class="nav nav-sidebar" id="accordion">
+    	{notempty name="_left"}
+    	{volist name="_left" id="vo"}
+    	<li class="panel">
+    		<a href="#{$vo.title|md5}" data-toggle="collapse" aria-expanded="false" data-parent="#accordion" class="active collapsed">
+    			<i class="iconfont_v2 {switch name="vo.name"}
+    						{case value="user/index"} icon-users{/case}
+							{case value="system/index"} icon-system-config{/case}
+							{case value="node/index"} icon-group{/case}
+							{case value="banner/index"} icon-pic{/case}
+							{case value="news/index"} icon-news{/case}
+							{case value="message/index"} icon-message{/case}
+							{case value="contact/index"} icon-telephone{/case}
+							{case value="industry/index"} icon-project{/case}
+							{default /} icon-reports
+						{/switch}"></i><span class="sid"></span>{$vo.title}<i class="iconfont icon-jiantou"></i>
+    		</a>
+            {notempty name="vo.children"}
+            <ul class="list-unstyled collapse" id="{$vo.title|md5}">
+            	{volist name="vo.children" id="v"}
+            	<li><a href="{:url($v.name)}">{$v.title}</a></li>
+            	{/volist}
+            </ul>
+            {/notempty}
+        </li>
+    	{/volist}
+    	{/notempty}
+    </ul>
+</div>

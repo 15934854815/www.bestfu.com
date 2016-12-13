@@ -1,0 +1,41 @@
+<div class="clear"></div>
+<div id="footer">
+	<ul class="footer">
+		<li>
+			<img src="__IMG__/home/serve.png" align="absmiddle"/>
+			<span class="footer-title">满意服务</span>
+			<p>所有产品在非人为损坏情况下7天无理由退货，15天换货。</p>
+			<p>农特产品全场包邮。</p>
+		</li>
+		<li>
+			<img src="__IMG__/home/plan.png" align="absmiddle"/>
+			<span class="footer-title">无忧计划</span>
+			<p>采用全球最好的工业生产材料。绿色无污染耕种，全程视频监控。国家3C认证、欧盟ce认证。</p>
+		</li>
+		<li>
+			<img src="__IMG__/home/experience.png" align="absmiddle"/>
+			<span class="footer-title">用户体验</span>
+			<p>免费体验贝多福旗下的所有产品。免费体验未来农场的所有种植项目。有机会免费获得产品、农特产或奖金。</p>
+		</li>
+		<li>
+			<img src="__IMG__/home/hotline.png" align="absmiddle"/>
+			<span class="footer-title">服务热线</span>
+			<p class="hotline">{$_cfgs.SERVICE_HOTLINE}</p>
+			<p>服务时间 | {$_cfgs.SERVICE_TIME}</p>
+		</li>
+	</ul>
+	<div class="clear"></div>
+	<div class="clear"></div>
+	{notempty name="_footer"}
+	<div id="footerleft">
+		<ul>
+			{volist name="_footer" id="vo"}
+			<li><a href="{:url($vo.url)}">{$vo.title}</a></li>
+			{/volist}
+		</ul>
+	</div>
+	{/notempty}
+	<div id="footerright">
+		{$_cfgs.WEBSITE_COPYRIGHT}  <span class="copy"> {$_cfgs.WEBSITE_ICP} </span>&nbsp;&nbsp;&nbsp;&nbsp;{$_cfgs.WEBSITE_VERSION}
+	</div>
+</div>
